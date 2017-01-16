@@ -48,6 +48,8 @@ class TeachingAssistantsController < ApplicationController
   end
 
   def update
+    # TODO: params[:private_id] is returning id (primary key) instead of private_id, causing all updates to fail
+    @teaching_assistant = TeachingAssistant.find_by_id(params[:private_id])
     if is_admin? && @teaching_assistant.update(teaching_assistant_params)
       redirect_to admins_dashboard_path, notice: 'Teaching assistant successfully updated.'
     elsif @teaching_assistant.update(teaching_assistant_params)
