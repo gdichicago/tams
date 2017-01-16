@@ -1,0 +1,15 @@
+#container { @include outer-container; }
+
+#content {
+  @include span-columns(12);
+  padding-bottom: 20px;
+}
+
+ul.container {
+  @include outer-container;
+}
+
+li.block {
+  @include span-columns(6);
+  @include omega(2n);
+}

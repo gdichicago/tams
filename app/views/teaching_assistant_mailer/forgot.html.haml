@@ -1,0 +1,19 @@
+%h1
+  Hello, #{@ta['name']}!
+
+%p A little birdy told us that you lost your private sign up page. Here it is!
+
+%p.center
+  %a.button{href: "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}"} View private sign up page
+
+%p.center.small
+  Or copy this link into your browser:
+  %br
+  %a{href: "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}"}
+    http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}
+
+
+#footer.small
+  %p
+    %b This email was sent because you signed up with <a href="http://#{BASE_URL}">#{CHAPTER_NAME}</a> as a volunteer TA.
+    To remove yourself from the list, visit your private sign up page and mark yourself as inactive.

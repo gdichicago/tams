@@ -1,0 +1,21 @@
+#nav {
+  margin-top: 40px;
+  padding: 10px 10px 0px 10px;
+  ul {
+    // stuff
+  }
+  li {
+    display: inline;
+    font-weight: 700;
+    padding: 10px 5px;
+    font-size: $base-font-size * 0.8;
+  }
+  a {
+    color: $base-font-color;
+    font-weight: 300;
+    padding: 10px 5px;
+    &:hover {
+      background-color: lighten($base-secondary-color, 35%);
+    }
+  }
+}

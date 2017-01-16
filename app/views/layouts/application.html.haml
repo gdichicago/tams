@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title Girl Develop It TAMS (Teaching Assistant Management System)
+    %meta{:name => "viewport", :content => "width=device-width; initial-scale=1.0; maximum-scale=1.0;"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', media: 'all'
+
+  %body
+    - if ENV['STAGING']
+      #footer
+        %h3 STAGING ENVIRONMENT ENABLED
+    #container
+      #content
+        #header
+          %h1 #{CHAPTER_NAME} Volunteering
+          - if @title
+            %h2= @title
+          #nav
+            %ul
+              %li Menu
+              - if is_admin?
+                %li
+                  %a{href: "#{admins_dashboard_path}"}
+                    Dashboard
+                %li
+                  %a{href: "#{admins_attendance_path}"}
+                    Attendance Management
+                %li
+                  %a{href: "#{teaching_assistants_path}"}
+                    TA Management
+                %li
+                  %a{href: "#{courses_path}"}
+                    Course List
+              - else
+                %li
+                  %a{href: "#{new_teaching_assistant_path}"}
+                    Sign Up
+                %li
+                  %a{href: "#{new_session_path}"}
+                    Admin Log In
+        #main
+          = yield

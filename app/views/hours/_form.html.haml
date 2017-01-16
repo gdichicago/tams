@@ -1,0 +1,19 @@
+= form_for @hour do |f|
+  - if @hour.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@hour.errors.count, "error")} prohibited this hour from being saved:"
+      %ul
+        - @hour.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :course_id, "Which course?"
+    = f.select(:course_id, @courses, {:include_blank => 'Course'})
+  .field
+    = f.label :teaching_assistant_id, "Which TA?"
+    = f.select(:teaching_assistant_id, @tas, {:include_blank => 'Teaching Assistant'})
+  .field
+    = label_tag :student, "Student?"
+    = check_box_tag :student
+  .actions
+    = f.submit 'Add TA to course'

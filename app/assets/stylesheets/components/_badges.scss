@@ -1,0 +1,15 @@
+.custom-badge {
+  padding: 0px 5px;
+  border-radius: 10px;
+  font-size: 80%;
+  color: $base-body-color;
+  font-weight: 700;
+  &:hover {
+    background-color: $medium-gray;
+  }
+}
+
+.custom-badge-accent {
+  @extend .custom-badge;
+  background-color: $base-accent-color;
+}

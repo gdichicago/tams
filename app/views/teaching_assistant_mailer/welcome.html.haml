@@ -1,0 +1,60 @@
+%h1
+  Hello, #{@ta['name']}!
+%p
+  Thanks for signing up to volunteer as a TA with Girl Develop It Chicago! Your application has been approved, and you are now able to sign up to volunteer for classes.
+%p
+  This orientation email contains all sorts of information about how to sign up, earning class credit, and reminder emails.
+%p
+  Please note that all students, volunteers, and staff are required to abide by the
+  %a{href: "http://girldevelopit.com/codeofconduct"}Girl Develop It Code of Conduct.
+  Report any violations or issues to GDI staff.
+
+%h2 Signing up
+%p
+  To sign up for classes, visit your private sign up page. No need to login!
+%p.center
+  %a.button{href: "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}"} View private sign up page
+
+%p.center.small
+  Or copy this link into your browser:
+  %br
+  %a{href: "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}"}
+    http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}
+%p
+  Your private sign up page contains:
+%ul
+  %li Your personal volunteering schedule
+  %li A list of classes you can RSVP for
+  %li Your credit hour balance and pending balance
+  %li A history of classes you have TA'd or attended using credit hours
+%p
+  %b A note about multi-day classes:
+  if you want to TA for every session, you have to sign up for each one. This is great for you because you can attend as many (or as few) sessions in a series as you want! Multi-day classes will be indicated with a 'Series' badge.
+%h2 Emails
+%p
+  You will receive emails:
+%ul
+  %li Once a month, with information about classes you can sign up for
+  %li A reminder email one-two weeks prior to a class you signed up for, including detailed information about the location
+%p
+  And that's it! No other emails, we promise.
+%h2 Credit hours
+%p
+  After you TA 4 complete classes for Girl Develop It Chicago, you are eligible to accumulate credit hours that can be used toward upcoming classes. Each class or session will list the number of credit hours you can earn for TA'ing. Usually, credit hours are earned as a 2:1 ratio, but some classes are worth more or less, depending on the nature of the material.
+%p
+  We don't expect everyone to take us up on this offer, but some of our TAs have expressed interest in taking classes, and we wanted to make it possible to us to reward you for oyur hard work.
+%p
+  %b The terms for using credit hours are as follows:
+%ul
+  %li Credit hours can only be used to cover the full cost of the class (no discounts or partial payment)
+  %li One credit hour == one hour of instruction time (or about $10)
+  %li You can only use credit hours you've earned: pending credit hours aren't available to spend, and you can't go into credit hour debt
+  %li We carefully manage class capacity, and sometimes we might not have a spot for you (but we'll try our best to fit you in)
+  %li To qualify to accumulate credit hours, you must TA 4 complete courses. For single-day workshops, this is pretty clear. For multi-session courses, you must TA for all of the sessions in order for it to count toward the minimum TA requirement.
+%p
+  To use credit hours, contact Liz directly.
+
+#footer.small
+  %p
+    %b This email was sent because you signed up with <a href="http://#{BASE_URL}">#{CHAPTER_NAME}</a> as a volunteer TA.
+    To remove yourself from the list, visit your private sign up page and mark yourself as inactive.

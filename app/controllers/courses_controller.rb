@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+
   before_action :set_course, only: [:ta_list, :edit, :update]
 
   def index

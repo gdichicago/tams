@@ -1,0 +1,138 @@
+- if @teaching_assistant.banned?
+  %h2 Hello!
+
+  %p
+    You are not eligible to TA for #{CHAPTER_NAME}.
+
+- else
+  %h2 Hello, #{@teaching_assistant.name}!
+  .container__30px
+    .center
+      %h1
+        You're signed up to TA for
+        %span.color__secondary
+          %b= @teaching_assistant.schedule.length
+        upcoming classes.
+      %h1
+        There are
+        %span.color__accent
+          %b= @num_available
+        classes that we still need TAs for.
+    %p
+      This is your secret sign up page. Only you (and the GDI Organizers) have access to this URL. You can sign up to TA new classes below, or change your RSVP for classes you already signed up to TA.
+    %p
+      Each area expands with additional details.
+
+  %h3#balances_header
+    %a{:href => "#"}
+      %span#balances_icon
+        = icon_toggle_right
+        Credit hour balance
+  #balances
+    .container__30px
+      - if @teaching_assistant.approved?
+        %p
+          %b Balance:
+          = @teaching_assistant.balance
+        %p
+          %b Pending balance:
+          = @teaching_assistant.pending_balance
+        %p
+          %b To use your credit hours:
+          Email <a href="mailto:liza@girldevelopit.com">Liz</a> and she will get you signed up in Meetup. That's unfortunately still a manual process.
+      - else
+        %p.pending
+          = icon_exclamation
+          You are not yet eligible to earn credit hours. After you TA four full classes, you will be eligible to earn credit hours toward classes.
+
+
+  %h3#schedule_header.padding-top__15px
+    %a{:href => "#"}
+      %span#schedule_icon
+        = icon_toggle_right
+      Your schedule (#{pluralize(@teaching_assistant.schedule.length, 'class')})
+
+  #schedule
+    .container__30px
+      %span.color__secondary= icon_code
+      Indicates a series (multi-session) course.
+    - if @teaching_assistant.schedule.any?
+      - @teaching_assistant.schedule.each do |course|
+        = render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant }
+    - else
+      .container__10px_30px
+        %p Looks like you're not signed up for anything right now.
+
+
+  %h3#sign_up_header.padding-top__15px
+    %a{:href => "#"}
+      %span#sign_up_icon
+        = icon_toggle_right
+        Sign up for more stuff! (#{pluralize(@num_available, 'class')} available)
+
+  #sign_up
+    - if @series.any?
+      - @series.each do |s|
+        - if s.courses.any?
+          .card
+            %h2
+              Series:
+              = s.name
+            = button_to "RSVP Yes for all Courses in Series", { controller: :hours, action: :mass_create, hour: { course_id: s.courses.first.id, teaching_assistant_id: @teaching_assistant.id, series_id: s.id } }, method: :post
+          - s.upcoming_courses_by_date.each do |course|
+            = render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant }
+
+    .container__30px_30px_10px_30px
+      %h2 Single-day Courses
+    - if @courses.any?
+      - @courses.each do |course|
+        = render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant }
+    - else
+      .container__30px
+        %p There aren't anymore classes to sign up for right now. Check back later!
+
+
+  %h3#history_header.padding-top__15px
+    %a{:href => "#"}
+      %span#history_icon
+        = icon_toggle_right
+        TA'ing history
+
+  #history
+    - if @teaching_assistant.history.empty?
+      .container__30px
+        %p You haven't TA'd for any classes yet.
+    - else
+      - @teaching_assistant.history.each do |hour|
+        = render partial: 'courses/ta_view', locals: { course: hour.course, teaching_assistant: @teaching_assistant }
+
+
+  - if @teaching_assistant.inactive?
+    %h3#active_header.padding-top__15px
+      %a{:href => "#"}
+        %span#active_icon
+          = icon_toggle_right
+          Re-activate me!
+
+    #active.container__30px
+      %p Welcome back!
+
+      %h4
+        = button_to 'Mark me as active', { controller: :teaching_assistants, action: :update, id: @teaching_assistant, teaching_assistant: { status_id: @pending.id } }, method: :put
+  - else
+    %h3#active_header.padding-top__15px
+      %a{:href => "#"}
+        %span#active_icon
+          = icon_toggle_right
+          Remove me
+
+    #active.container__30px
+      %p We're sad to see you go!
+
+      %p
+        %b Important note:
+        Removing yourself will mark you as inactive in our system. Your history and contact details will still exist in our TA database, but you will no longer receive emails.
+
+      %p You can reactivate your account later if you want to. Just visit this page again!
+
+      = button_to "Mark me as inactive", { controller: :teaching_assistants, action: :update, private_id: @teaching_assistant, teaching_assistant: { status_id: @inactive.id } }, method: :put, class: 'light-red'

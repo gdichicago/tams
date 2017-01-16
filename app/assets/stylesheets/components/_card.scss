@@ -1,0 +1,27 @@
+@mixin cardBase {
+  @include outer-container;
+  &:hover {
+    background-color: lighten($light-gray, 10%);
+  }
+  .column_small {
+    @include span-columns(4);
+  }
+  .column_large {
+    @include span-columns(8);
+  }
+}
+
+.card {
+  @extend .container__30px;
+  @include cardBase;
+}
+
+.card__mini {
+  @extend .container__10px;
+  @include cardBase;
+}
+
+.card-highlight {
+  @extend .container__30px;
+  background-color: lighten($light-gray, 10%);
+}

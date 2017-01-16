@@ -1,0 +1,9 @@
+#modal
+  .overlay
+  .modal
+    %a#close{:href => "#{}"}
+      = icon_x
+    %h3.flush--top.padding-bottom__10px Add a new Teaching Assistant
+    %p All fields are required for us to process your application.
+
+    = render 'form'

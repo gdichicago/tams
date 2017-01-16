@@ -1,0 +1,50 @@
+%h1
+  Hello, #{@ta['name']}!
+%p
+  Thank you so much for helping out with
+  %b #{@course['name']}.
+  We quite seriously couldn't do it without you! I've included additional details about the class below. If you have any questions or need something, I’m here to help make this easier for you - let me know what I can do.
+
+%p
+  If you are unable to make it to any of the dates you’ve committed to,
+  %b please let me (not the instructor) know as soon as possible
+  so I can try and find a replacement.
+
+%p
+  I am here to support you and the instructor for this class, so if there is anything I can do to make it easier or more fun for you, let me know!
+
+%p
+  Please note that all students, volunteers, and staff are required to abide by the
+  %a{href: "http://girldevelopit.com/codeofconduct"}Girl Develop It Code of Conduct.
+  Report any violations or issues to GDI staff.
+
+%h2 Date and Time
+
+%p
+  = @course['pretty_date']
+  %br
+  = @course['pretty_time']
+
+%p
+  %em Unless otherwise specified in the Meetup description, food is not provided (with the exception of breakfast at all-day workshops that run from 9AM-6PM).
+
+%h2 Location
+
+%p= @course['location']
+
+%h2 Class information
+
+%p
+  %b Please review the curriculum before arriving in class.
+  The curriculum can be found online here: <a href="http://#{MATERIALS_URL}">#{MATERIALS_URL}</a>.
+
+%p
+  When you arrive, please introduce yourself to the instructor. They will be standing at the front of the classroom. You may be asked to very briefly introduce yourself to the students at the beginning of class.
+
+%p
+  If you don't know the answer to a student's question, that's ok! Ask another TA - or the instructor. If you notice the same question being asked multiple times, let the instructor know so they can review for the class.
+
+#footer.small
+  %p
+    %b This email was sent because you signed up with <a href="http://#{BASE_URL}">#{CHAPTER_NAME}</a> as a volunteer TA.
+    To remove yourself from the list, visit your private sign up page and mark yourself as inactive.

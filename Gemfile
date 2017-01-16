@@ -36,6 +36,13 @@ gem 'rb-readline', '~> 0.5.3'
 
 gem "haml-rails", "~> 0.9"
 
+gem 'bourbon', '~> 4.2', '>= 4.2.7'
+gem 'neat', '~> 1.8'
+gem 'bitters', '~> 1.2'
+
+gem 'resque', '~> 1.26'
+gem 'resque_mailer', '~> 2.4', '>= 2.4.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

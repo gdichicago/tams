@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  # before_action :set_resources
+  before_action :set_resources
 
   def dashboard
     @title = "Organizer Dashboard"

@@ -1,4 +1,4 @@
-class Course < ActiveRecord::Base
+class Course < ApplicationRecord
   before_validation :format_pretty_dates
 
   belongs_to :series
