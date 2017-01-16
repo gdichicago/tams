@@ -1,0 +1,20 @@
+<h2>Not an organizer?</h2>
+
+<div>
+  Sign up to be a teaching assistant!
+
+  // fix link
+  <%= link_to 'Sign up', root_path %>
+</div>
+
+<h2>Organizer Login</h2>
+<div>
+  <%= form_tag(sessions_path) %>
+  <%= label_tag :name %>:
+  <%= text_field_tag :name %><br />
+
+  <%= label_tag :password %>:
+  <%= password_field_tag :password %><br />
+
+  <%= submit_tag 'Login' %>
+</div>

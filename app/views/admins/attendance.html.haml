@@ -1,0 +1,8 @@
+- if notice
+  %p#notice= notice
+
+.container__30px
+  %span.color__secondary= icon_code
+  Indicates a series (multi-session) course.
+- @past_courses.each do |course|
+  = render partial: 'courses/admin_view', locals: { course: course }

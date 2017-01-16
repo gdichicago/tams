@@ -1,0 +1,43 @@
+= form_for @course do |f|
+  - if @course.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@course.errors.count, "error")} prohibited this course from being saved:"
+      %ul
+        - @course.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name, 'Course name'
+    = f.text_field :name
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :start_time
+    = f.time_select :start_time
+  .field
+    = f.label :end_time
+    = f.time_select :end_time
+  .field
+    = f.label :url, 'Meetup URL'
+    = f.text_field :url
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :description, 'Course description'
+    = f.text_area :description
+  .field
+    = f.label :meetup_id, "ID of the Meetup"
+    = f.text_field :meetup_id
+  .field
+    = f.label :credit_hours, 'Number of credit hours received'
+    = f.number_field :credit_hours
+  .field
+    = f.label :num_tas_neeed, 'Number of teaching assistants needed'
+    = f.number_field :num_tas_needed
+  .field
+    = f.label :series_id, "Is this course part of a series?"
+    = f.select(:series_id, @series.collect {|s| ["#{s.name} (ending #{s.pretty_end_date})", s.id]}, {:include_blank => 'Course series'})
+  .actions
+    = f.submit 'Save'

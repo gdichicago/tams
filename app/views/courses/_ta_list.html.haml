@@ -1,0 +1,23 @@
+#modal
+  .overlay
+  .modal
+    %a#close{:href => "#{}"}
+      = icon_x
+    %h3.flush--top TA List
+    %h4.padding-bottom__10px= @course.name
+
+    - @course.teaching_assistants.each do |ta|
+      .card__mini
+        %span.padding-right__10px
+          = ta.signed_up_for(@course)
+        %strong= ta.name
+        = link_to icon_link_out + ' Profile', teaching_assistant_path(ta.private_id), class: 'badge default'
+        - if ta.is_ta_for?(@course)
+          = link_to icon_book + ' Use hours', { controller: :hours, action: :update, id: @course.hour_for(ta), hour: { num: -@course.student_hours } }, method: :put, title: "Change TA to student", class: "badge warning"
+        - else
+          = link_to icon_history + ' Make TA', { controller: :hours, action: :update, id: @course.hour_for(ta), hour: { num: @course.credit_hours } }, method: :put, title: "Change student to TA", class: "badge approved"
+        = link_to icon_delete + ' Remove', { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, title: "Remove TA from course (will also remove hours from credit balance)", class: "badge warning margin-right__10px"
+        - if ta.missing_email_for?(@course)
+          %span.custom-badge-accent
+            = icon_email
+            !

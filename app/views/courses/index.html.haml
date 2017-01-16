@@ -1,0 +1,7 @@
+%h2.padding-top__15px
+  %a{:href => "#"}
+    = icon_toggle_down
+    Full Course List
+
+- @courses.each do |course|
+  = render partial: 'courses/admin_view', locals: { course: course }
