@@ -5,6 +5,16 @@
 /       = icon_x
 /     %h3.flush--top.padding-bottom__10px Import a Course from Meetup
 
+%h2#add_new_things_header.padding-top__15px
+  %a{:href => "#"}
+    %span#add_new_things_icon
+    Add Course, TA, or Series
+
+#add_new_things
+  .container__30px
+    = link_to 'Add a new Series', new_series_path, remote: true, class: 'button'
+    = link_to 'Add a new TA', new_teaching_assistant_path, remote: true, class: 'button'
+
 %h3.padding-vertical__15px Import a Course from Meetup
 
 %p Provide the full Meetup URL to import all event information.

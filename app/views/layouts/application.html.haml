@@ -20,17 +20,19 @@
             %h2= @title
           #nav
             %ul
-              %li Menu
               - if is_admin?
                 %li
                   %a{href: "#{admins_dashboard_path}"}
                     Dashboard
                 %li
-                  %a{href: "#{admins_attendance_path}"}
-                    Attendance Management
-                %li
                   %a{href: "#{teaching_assistants_path}"}
                     TA Management
+                %li
+                  %a{href: "#{new_course_path}"}
+                    New Course
+                %li
+                  %a{href: "#{admins_upcoming_courses_path}"}
+                    Upcoming Courses
                 %li
                   %a{href: "#{courses_path}"}
                     Course List

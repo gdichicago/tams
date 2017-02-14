@@ -4,6 +4,7 @@ class TeachingAssistantsController < ApplicationController
 
   # GET /teaching_assistants
   def index
+    @title = "TA Management"
     render 'shared/admin_only' unless is_admin?
     @teaching_assistants = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
   end

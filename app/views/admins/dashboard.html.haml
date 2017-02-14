@@ -1,23 +1,6 @@
 - if notice
   %p#notice= notice
 
-%h2.padding-top__15px
-  %a{:href => "#{teaching_assistants_path}"}
-    = icon_link_out
-    Manage Teaching Assistants
-
-%h2#add_new_things_header.padding-top__15px
-  %a{:href => "#"}
-    %span#add_new_things_icon
-      = icon_toggle_right
-    Add Course, TA, or Series
-
-#add_new_things
-  .container__30px
-    = link_to 'Add a new Series', new_series_path, remote: true, class: 'button'
-    = link_to 'Add a new TA', new_teaching_assistant_path, remote: true, class: 'button'
-    = render partial: 'courses/new'
-
 - if TeachingAssistant.prospective.any?
   %h2#prospective_tas_header.padding-top__15px
     %a{:href => "#"}
@@ -33,12 +16,6 @@
         = link_to icon_thumbs_up + ' Upgrade to Pending', { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }, class: 'padding-right__10px'
         %b= ta.name
 
-
-%h2#attendance_management_header.padding-top__15px
-  %a{:href => "#{admins_attendance_path}"}
-    = icon_link_out
-    Attendance Management
-
 %h2#monthly_emails_header.padding-top__15px
   %a{:href => "#"}
     %span#monthly_emails_icon
@@ -51,17 +28,3 @@
       This will email all Teaching Assistants! Use with caution.
 
     = button_to 'Send monthly sign up email', { controller: :emails, action: :monthly }, method: :get
-
-%h2#upcoming_courses_header.padding-top__15px
-  %a{:href => "#"}
-    %span#upcoming_courses_icon
-      = icon_toggle_down
-    Upcoming Courses
-
-#upcoming_courses
-  .container__30px
-    %span.color__secondary= icon_code
-    Indicates a series (multi-session) course.
-  - @courses.each do |course|
-    = render partial: 'courses/admin_view', locals: { course: course }
-

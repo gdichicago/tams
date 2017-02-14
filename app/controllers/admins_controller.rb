@@ -7,8 +7,8 @@ class AdminsController < ApplicationController
     @course = Course.new
   end
 
-  def attendance
-    @title = "Attendance Management"
+  def upcoming
+    @title = "Upcoming Courses"
     render 'shared/admin_only' unless is_admin?
     @past_courses = Course.last_month.includes(:teaching_assistants, :series).sort_by(&:date).reverse
   end
