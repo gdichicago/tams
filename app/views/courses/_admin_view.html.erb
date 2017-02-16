@@ -1,19 +1,19 @@
 <div class="card">
-  <div class="card-left">
-    <h3>
-      <% if course.is_series? %>
-      <span><%= icon_code %></span>
-      <% end %>
-      <%= course.name %>
-    </h3>
+  <h3>
+    <% if course.is_series? %>
+    <span><%= icon_code %></span>
+    <% end %>
+    <%= course.name %>
+  </h3>
 
+  <div class="card-left">
     <h4><%= course.pretty_date %></h4>
 
     <p>
       <%= course.location %> from <%= course.pretty_time %>
     </p>
 
-    <a href="#{course.url}">View on Meetup <%= icon_link_out %></a>
+    <a href="<%=course.url%>">View on Meetup <%= icon_link_out %></a>
 
     <p>
       Credit Hours: <%= course.credit_hours %>
@@ -49,7 +49,7 @@
     <% end %>
 
     <p>
-      <a href="#{edit_course_path(course)}">Edit <%= icon_edit %></a>
+      <a href="<%=edit_course_path(course)%>">Edit <%= icon_edit %></a>
     </p>
   </div>
 </div>

@@ -289,7 +289,7 @@ input[type="text"], input[type="email"] {
   font-size: 85%;
   list-style-type: none;
   display: inline-block;
-  width: 100%;
+  width: 80%;
 }
 
 .card-left {
