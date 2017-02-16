@@ -210,7 +210,6 @@ input[type="text"], input[type="email"] {
 
 .main-button {
   width: 25%;
-  padding: 8px 12px;
   margin: 8px 0 0;
   border: 2px solid #2a4758;
   background: 0;
@@ -226,6 +225,10 @@ input[type="text"], input[type="email"] {
   background: #2a4758;
   color: #fff;
   text-decoration: none;
+}
+
+.default-button {
+  padding: 8px 12px;
 }
 
 .form-button {
