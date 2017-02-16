@@ -1,0 +1,18 @@
+<%= form_for @teaching_assistant, html: { class: "form" } do |f| %>
+  <%= f.label :name, "First and last name as it appears on your ID" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= label_tag :about, "Tell us a little about yourself. Keep it short and simple!" %>
+  <%= text_field_tag :about %>
+
+  <%= label_tag :how, "How did you find us?" %>
+  <%= text_field_tag :how %>
+
+  <%= label_tag :why, "Why are you looking to get involved with GDI Chicago?" %>
+  <%= text_field_tag :why %>
+
+  <%= f.submit "Submit", class: "main-button form-button" %>
+<% end %>

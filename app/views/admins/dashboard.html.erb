@@ -1,0 +1,25 @@
+<h2 class="pink">Prospective TAs</h2>
+<% if TeachingAssistant.prospective.any? %>
+  <p>Approving an application will email the TA.</p>
+  <table>
+    <% TeachingAssistant.prospective.each do |ta| %>
+      <tr>
+        <td>
+          <%= ta.name %>
+        </td>
+        <td>
+          <i class="fa fa-rocket pink"></i>
+          <%= link_to('upgrade to pending', { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }, class: 'plain-link') %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+    <p>There are currently no prospective TAs.</p>
+<% end %>
+
+<h2 class="pink">Monthly Course Emails</h2>
+<p>
+  This will email all teaching assistants! Use with caution.
+  <%= link_to('Send email', { controller: :emails, action: :monthly }, method: :get, class: 'main-button') %>
+</p>

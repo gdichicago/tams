@@ -1,0 +1,259 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #F05B62;
+}
+hgroup a {
+    color: #fff;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+h1 {font-size: 2.44444rem; font-weight: 300;}
+h2 {font-size: 2.05556rem; font-weight: 300;}
+h3 {font-size: 1.5rem; font-weight: 300;}
+h4 {font-size: 1.27778rem; font-weight: 300;}
+h5 {font-size: 1rem; font-weight: 300;}
+h6 {font-size: 1rem; font-weight: 300;}
+
+
+/* LAYOUT CSS */
+body {
+  color: #2a4758;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+#layout {
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    top: auto;
+    margin: 3em 1em;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.notice {
+  color: #F05B62;
+  font-size: 0.8em;
+}
+
+.sidebar {
+    background: #F05B62;
+    color: #fff;
+}
+
+.brand-title,
+.brand-tagline {
+    margin: 0;
+}
+.brand-title {
+    text-transform: uppercase;
+}
+.brand-tagline {
+    font-weight: 300;
+    color: rgb(176, 202, 219);
+}
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.nav-item {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.nav-item a {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    margin-top: 1em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 85%;
+}
+.nav-item a:hover,
+.nav-item a:focus {
+    background: #fff;
+    color: #F05B62;
+    text-decoration: none;
+}
+
+th, td {
+  padding: 5px 20px;
+}
+
+.content-subhead {
+    text-transform: uppercase;
+    color: #aaa;
+    border-bottom: 1px solid #eee;
+    padding: 0.4em 0;
+    font-size: 80%;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.content {
+    padding: 2em 1em 0;
+}
+
+.post {
+    padding-bottom: 2em;
+}
+.post-title {
+    font-size: 2em;
+    color: #222;
+    margin-bottom: 0.2em;
+}
+.post-avatar {
+    border-radius: 50px;
+    float: right;
+    margin-left: 1em;
+}
+.post-description {
+    font-family: Georgia, "Cambria", serif;
+    color: #444;
+    line-height: 1.8em;
+}
+.post-meta {
+    color: #999;
+    font-size: 90%;
+    margin: 0;
+}
+
+.post-images {
+    margin: 1em 0;
+}
+.post-image-meta {
+    margin-top: -3.5em;
+    margin-left: 1em;
+    color: #fff;
+    text-shadow: 0 1px 1px #333;
+}
+
+small {
+font-size: 75%;
+}
+.footer {
+    text-align: center;
+    padding: 1em;
+}
+.footer ul {
+list-style-type: none;
+text-align: right;
+}
+.footer li {
+margin-left: 1em;
+display: inline;
+}
+.footer a {
+    color: #fff;
+    font-size: 80%;
+}
+.footer .pure-menu a:hover,
+.footer .pure-menu a:focus {
+    background: none;
+}
+
+.pink {
+  color: #F05B62;
+}
+
+.form {
+  width: 50%;
+  position: relative;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  transition: all .3s;
+  border-bottom: 2px solid #2a4758;
+  color: #2a4758;
+}
+
+input:focus, textarea:focus {
+  border-bottom: 2px solid #F05B62;
+}
+
+input[type="text"], input[type="email"] {
+  color: #2a4758;
+  font-family: "Open Sans", sans-serif;
+  font-size: 90%;
+}
+
+.main-button {
+  width: 25%;
+  padding: 8px 12px;
+  margin: 8px 0 0;
+  border: 2px solid #2a4758;
+  background: 0;
+  color: #2a4758;
+  cursor: pointer;
+  transition: all .3s;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 85%;
+}
+
+.main-button:hover {
+  background: #2a4758;
+  color: #fff;
+  text-decoration: none;
+}
+
+.form-button {
+  float: right;
+}
+
+.plain-link {
+  text-decoration: none;
+}
+.plain-link:hover {
+  color: #2a4758;
+  text-decoration: none;
+}
+
+@media (min-width: 48em) {
+    .content {
+        padding: 2em 3em;
+        margin-left: 25%;
+    }
+
+    .header {
+        margin: 2em 1em;
+        text-align: right;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+    }
+}

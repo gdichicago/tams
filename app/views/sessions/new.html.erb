@@ -1,0 +1,15 @@
+<h2>Not an organizer?</h2>
+<p>Sign up to be a teaching assistant!</p>
+<%= link_to 'TA Sign up', new_teaching_assistant_path, class: 'main-button' %>
+
+<h2>Organizer Login</h2>
+<%= form_for sessions_path, method: :post, html: { class: "form" } do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+
+  <!-- TODO: fix button css because it looks like shit -->
+  <%= submit_tag 'Login', class: 'main-button form-button' %>
+<% end %>
