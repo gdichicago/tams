@@ -235,8 +235,43 @@ input[type="text"], input[type="email"] {
 .plain-link {
   text-decoration: none;
 }
-.plain-link:hover {
+.plain-link:hover,
+ .plain-link:focus {
   color: #2a4758;
+  text-decoration: none;
+}
+
+.list {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.list li {
+    background: transparent;
+    border: 2px solid #2a4758;
+    color: #2a4758;
+    margin: 1em;
+    padding: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 85%;
+    list-style-type: none;
+    display: inline-block;
+    width: 40%;
+}
+.list li:hover,
+.list li:focus {
+  border: 2px solid #F05B62;
+  text-decoration: none;
+}
+
+.ta-name {
+  color: #2a4758;
+  font-size: 1.25em;
+}
+.ta-name:hover,
+.ta-name:focus {
+  color: #F05B62;
   text-decoration: none;
 }
 

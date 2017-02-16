@@ -12,7 +12,7 @@
           - elsif teaching_assistant.pending?
             = icon_x
           - else
-            = icon_delete
+            = icon_ban
         = teaching_assistant.name
         = link_to icon_link_out + ' Profile', teaching_assistant_path(teaching_assistant.private_id)
         - if teaching_assistant.approved?
@@ -21,7 +21,6 @@
           = link_to icon_thumbs_up + ' Up', { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put
         - else
           = link_to icon_thumbs_up + ' Up', { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put
-        = link_to icon_delete + ' Ban', { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put
+        = link_to icon_ban + ' Ban', { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put
         %br
         = teaching_assistant.email
-

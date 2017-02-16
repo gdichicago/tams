@@ -15,8 +15,8 @@ module IconsHelper
     raw('<i class="fa fa-code"></i>')
   end
 
-  def icon_delete
-    raw('<i class="fa fa-minus-circle"></i>')
+  def icon_ban
+    raw('<i class="fa fa-ban"></i>')
   end
 
   def icon_edit
@@ -65,5 +65,13 @@ module IconsHelper
 
   def icon_x
     raw('<i class="fa fa-times"></i>')
+  end
+
+  def icon_rocket
+    raw('<i class="fa fa-rocket"></i>')
+  end
+
+  def icon_hourglass
+    raw('<i class="fa fa-hourglass-half"></i>')
   end
 end

@@ -16,7 +16,7 @@
           = link_to icon_book + ' Use hours', { controller: :hours, action: :update, id: @course.hour_for(ta), hour: { num: -@course.student_hours } }, method: :put, title: "Change TA to student", class: "badge warning"
         - else
           = link_to icon_history + ' Make TA', { controller: :hours, action: :update, id: @course.hour_for(ta), hour: { num: @course.credit_hours } }, method: :put, title: "Change student to TA", class: "badge approved"
-        = link_to icon_delete + ' Remove', { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, title: "Remove TA from course (will also remove hours from credit balance)", class: "badge warning margin-right__10px"
+        = link_to icon_ban + ' Remove', { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, title: "Remove TA from course (will also remove hours from credit balance)", class: "badge warning margin-right__10px"
         - if ta.missing_email_for?(@course)
           %span.custom-badge-accent
             = icon_email
