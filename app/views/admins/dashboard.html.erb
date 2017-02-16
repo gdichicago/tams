@@ -1,4 +1,4 @@
-<h2 class="pink">Prospective TAs</h2>
+<h2>Prospective TAs</h2>
 <% if TeachingAssistant.prospective.any? %>
   <p>Approving an application will email the TA.</p>
   <table>
@@ -18,7 +18,7 @@
     <p>There are currently no prospective TAs.</p>
 <% end %>
 
-<h2 class="pink">Monthly Course Emails</h2>
+<h2>Monthly Course Emails</h2>
 <p>
   This will email all teaching assistants! Use with caution.
   <%= link_to('Send email', { controller: :emails, action: :monthly }, method: :get, class: 'main-button default-button') %>

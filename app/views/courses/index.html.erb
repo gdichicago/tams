@@ -1,0 +1,5 @@
+<h2>Courses</h2>
+
+<% @courses.each do |course| %>
+  <%= render partial: 'courses/admin_view', locals: { course: course } %>
+<% end %>

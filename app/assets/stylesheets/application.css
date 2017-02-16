@@ -278,6 +278,33 @@ input[type="text"], input[type="email"] {
   text-decoration: none;
 }
 
+.card {
+  background: transparent;
+  border: 2px solid #2a4758;
+  color: #2a4758;
+  margin: 1em;
+  padding: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 85%;
+  list-style-type: none;
+  display: inline-block;
+  width: 100%;
+}
+
+.card-left {
+  float: left;
+  display: inline-block;
+  width: 50%;
+}
+
+.card-right {
+  float: right;
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+
 @media (min-width: 48em) {
     .content {
         padding: 2em 3em;
