@@ -2,14 +2,12 @@ class TeachingAssistantsController < ApplicationController
   before_action :set_teaching_assistant, only: [:edit, :show, :update, :destroy]
   before_action :set_status, only: [:index, :show]
 
-  # GET /teaching_assistants
   def index
     @title = "TA Management"
     render 'shared/admin_only' unless is_admin?
     @teaching_assistants = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
   end
 
-  # GET /teaching_assistants/1
   def show
     courses = Course.upcoming.single_day.sort_by(&:date)
     @courses = courses.delete_if do |course|
@@ -45,10 +43,9 @@ class TeachingAssistantsController < ApplicationController
   end
 
   def update
-    # TODO: params[:private_id] is returning id (primary key) instead of private_id, causing all updates to fail
     @teaching_assistant = TeachingAssistant.find_by(private_id: params[:private_id])
     if is_admin? && @teaching_assistant.update(teaching_assistant_params)
-      redirect_to admins_dashboard_path, notice: 'Teaching assistant successfully updated.'
+      redirect_to teaching_assistants_path, notice: 'Teaching assistant successfully updated.'
     elsif @teaching_assistant.update(teaching_assistant_params)
       private_id = @teaching_assistant.private_id
       redirect_to teaching_assistant_path(private_id), notice: 'Updated!'
