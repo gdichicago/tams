@@ -1,5 +1,9 @@
 <h2>Courses</h2>
 
+<%= link_to 'Add a course', new_course_path, class: 'main-button default-button' %>
+
+<br /><br />
+
 <% @courses.each do |course| %>
   <%= render partial: 'courses/admin_view', locals: { course: course } %>
 <% end %>
