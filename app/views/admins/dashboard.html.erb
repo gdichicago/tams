@@ -2,7 +2,7 @@
   <h2>Prospective TAs</h2>
   <div class="col-lg-8">
     <% if TeachingAssistant.prospective.any? %>
-    <p>Approving an application will set the TA's status to pending and will send them an email.</p>
+    <p>Approving an application will send them an email and set the TA's status to pending.</p>
     <table class="table table-striped table-hover">
       <tbody>
         <% TeachingAssistant.prospective.each do |ta| %>
