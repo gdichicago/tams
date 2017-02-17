@@ -8,7 +8,6 @@ class CoursesController < ApplicationController
     @courses = Course.all.sort_by(&:date).reverse
   end
 
-  # GET /courses/new
   def new
     @title = "New Course"
     render 'shared/admin_only' unless is_admin?
@@ -21,26 +20,26 @@ class CoursesController < ApplicationController
     @series = Series.all
   end
 
-  # POST /courses
   def create
     @course = Course.new(course_params)
 
     if @course.save
-      redirect_to admins_dashboard_path, notice: 'Course was successfully created.'
+      notice = 'Course was successfully created.'
     else
-      redirect_to admins_dashboard_path, error: 'Course was not successfully created. Womp womp.'
+      notice = 'Oh, no! Course was not successfully created.'
     end
+
+    redirect_to courses_path, notice: notice
   end
 
   def update
     if @course.update(course_params)
-      redirect_to admins_dashboard_path, notice: 'Course was successfully updated.'
+      redirect_to courses_path, notice: 'Course was successfully updated.'
     else
       render :edit
     end
   end
 
-  # CUSTOM ROUTES
   def ta_list
     respond_to do |format|
       format.html
@@ -49,12 +48,10 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def course_params
       params.require(:course).permit(:name, :date, :url, :location, :description, :num_tas_needed, :meetup_id, :credit_hours, :series_id, :start_time, :end_time, :email_sent)
     end

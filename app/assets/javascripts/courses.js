@@ -1,8 +1,7 @@
 var ready = function() {
-  $('#main #fetch_meetup_button').on('click', function(event) {
-    var url = $('input#fetch_meetup_url').val();
+  $('#fetch_meetup_button').on('click', function(event) {
+    var url = $('#fetch_meetup_url').val();
     $('.fetch_meetup').hide();
-    loadingThingy();
     fetchMeetup(url);
   });
 
@@ -31,7 +30,6 @@ var ready = function() {
 
   function populateForm(data, id) {
     var date = dateFromSecondsSinceEpoch(data.time);
-    var day = date.getDate();
 
     // START TIME
     var startHour = date.getHours();
@@ -58,34 +56,23 @@ var ready = function() {
       hours = '0' + hours;
     }
 
-    $('#main #course_name').val(data.name);
-    $('#main #course_url').val(data.event_url);
-    $('#main #course_location').val(data.venue.name + ' ' + data.venue.address_1);
-    $('#main #course_description').val(data.description);
-    $('#main #course_date_1i').val('2014');
-    $('#main #course_date_2i').val(date.getMonth() + 1); // January
-    $('#main #course_date_3i').val(day); // 1-31
-    $('#main #course_start_time_4i').val(startHour);
-    $('#main #course_start_time_5i').val(startMins);
-    $('#main #course_end_time_4i').val(hours);
-    $('#main #course_end_time_5i').val(minutes);
-    $('#main #course_meetup_id').val(id);
-    $('#main .loading').remove();
+    $('#course_name').val(data.name);
+    $('#course_url').val(data.event_url);
+    $('#course_location').val(data.venue.name + ' ' + data.venue.address_1);
+    $('#course_date_1i').val(date.getFullYear());
+    $('#course_date_2i').val(date.getMonth() + 1);
+    $('#course_date_3i').val(date.getDate());
+    $('#course_start_time_4i').val(startHour);
+    $('#course_start_time_5i').val(startMins);
+    $('#course_end_time_4i').val(hours);
+    $('#course_end_time_5i').val(minutes);
+    $('#course_meetup_id').val(id);
   }
 
   function dateFromSecondsSinceEpoch(secs) {
     var date = new Date(0);
     date.setUTCMilliseconds(secs);
     return date;
-  }
-
-  function prettyMonth(num) {
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    return months[num];
-  }
-
-  function loadingThingy() {
-    $('.loading').append('<img src="/images/loading.gif">');
   }
 };
 

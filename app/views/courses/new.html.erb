@@ -1,0 +1,41 @@
+<h2>Add Course, TA, or Series</h2>
+
+<h4>Provide the full Meetup URL to import all event information.</h4>
+
+<p>
+  <strong>Note:</strong> You will need to manually enter the following information:
+</p>
+
+<ul>
+  <li>
+    Number of credit hours received
+  </li>
+  <li>
+    Number of teaching assistants needed
+  </li>
+  <li>
+    <strong>For multi-day classes only:</strong> Select the relevant course series
+  </li>
+</ul>
+
+<h4>Is this a multi-day course?</h4>
+
+<p>
+  After you have added the series, come back to this page and import the course once for each session. Make sure you use the right date for each imported session! TAs sign up for sessions individually.
+</p>
+
+<p>
+  <h4>Quicklinks:</h4>
+  <%= link_to 'Add a new Series', new_series_path, remote: true, class: 'main-button default-button' %>
+  <%= link_to 'Add a new TA', new_teaching_assistant_path, remote: true, class: 'main-button default-button' %>
+</p>
+
+<h4>Import from Meetup</h4>
+
+<%= label_tag :url, 'Meetup URL' %>
+<%= text_field_tag :url, '', id: 'fetch_meetup_url' %>
+<%= submit_tag 'Fetch', id: 'fetch_meetup_button', class: 'main-button form-button' %>
+
+<h4>Imported Meetup</h4>
+
+<%= render 'courses/form' %>
