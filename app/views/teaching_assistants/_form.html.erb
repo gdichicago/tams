@@ -1,18 +1,30 @@
-<%= form_for @teaching_assistant, html: { class: "form" } do |f| %>
-  <%= f.label :name, "First and last name as it appears on your ID" %>
-  <%= f.text_field :name %>
+<%= form_for @teaching_assistant, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'First and last name', class: 'col-lg-3 control-label' %>
+    <%= f.text_field :name, class: 'col-lg-9' %>
+  </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <div class="form-group">
+    <%= f.label :email, class: 'col-lg-3 control-label' %>
+    <%= f.email_field :email, class: 'col-lg-9' %>
+  </div>
 
-  <%= label_tag :about, "Tell us a little about yourself. Keep it short and simple!" %>
-  <%= text_field_tag :about %>
+  <div class="form-group">
+    <%= label_tag :about, 'Tell us a little about yourself. Keep it short and simple!', class: 'col-lg-3 control-label' %>
+    <%= text_area_tag :about, nil, class: 'col-lg-9' %>
+  </div>
 
-  <%= label_tag :how, "How did you find us?" %>
-  <%= text_field_tag :how %>
+  <div class="form-group">
+    <%= label_tag :how, 'How did you find us?', class: 'col-lg-3 control-label' %>
+    <%= text_field_tag :how, nil, class: 'col-lg-9' %>
+  </div>
 
-  <%= label_tag :why, "Why are you looking to get involved with GDI Chicago?" %>
-  <%= text_field_tag :why %>
+  <div class="form-group">
+    <%= label_tag :why, 'Why are you looking to get involved with GDI Chicago?', class: 'col-lg-3 control-label' %>
+    <%= text_area_tag :why, nil, class: 'col-lg-9' %>
+  </div>
 
-  <%= f.submit "Submit", class: "main-button form-button" %>
+  <div class="col-lg-offset-11">
+    <%= f.submit 'Submit', class: 'btn btn-info' %>
+  </div>
 <% end %>

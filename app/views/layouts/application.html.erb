@@ -4,58 +4,42 @@
     <title>GDI Chicago TAMS</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'http://yui.yahooapis.com/pure/0.5.0/pure-min.css' %>
-    <%= stylesheet_link_tag 'http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://use.fontawesome.com/9e05654630.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div id="layout" class="pure-g">
-      <div class="sidebar pure-u-1 pure-u-md-1-4">
-        <div class="header">
-          <hgroup>
-            <%= image_tag('logo.png', class: 'logo') %>
-            <h1>Volunteering</h1>
-          </hgroup>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'GDI Volunteering', root_path, class: 'navbar-brand' %>
+        </div>
 
-          <nav class="nav">
-            <ul class="nav-list">
-              <% if is_admin? %>
-                <li class="nav-item">
-                  <%= link_to('Dashboard', admins_dashboard_path, class: 'pure-button') %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to('Teaching Assistants', teaching_assistants_path, class: 'pure-button') %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to('Courses', courses_path, class: 'pure-button') %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to('Sign Up', new_teaching_assistant_path, class: 'pure-button') %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to('Admin Login', new_session_path, class: 'pure-button') %>
-                </li>
-              <% end %>
-            </ul>
-          </nav>
-       </div>
-      </div>
-
-      <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-          <div class="post">
-            <% if notice %>
-              <span class="notice"><i class="fa fa-info-circle"></i> <%= notice %></span>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+          <ul class="nav navbar-nav">
+            <% if is_admin? %>
+              <li><%= link_to 'Dashboard', admins_dashboard_path %></li>
+              <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
+              <li><%= link_to 'Courses', courses_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign Up', new_teaching_assistant_path %></li>
+              <li><%= link_to 'Admin Login', new_session_path %></li>
             <% end %>
-
-            <%= yield %>
-          </div>
+          </ul>
         </div>
       </div>
+    </nav>
+
+    <div class="col-lg-offset-2">
+      <% if notice %>
+        <div class="alert alert-dismissible alert-info col-lg-10">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <%= yield %>
     </div>
   </body>
 </html>

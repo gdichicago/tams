@@ -1,25 +1,33 @@
-<h2>Prospective TAs</h2>
-<% if TeachingAssistant.prospective.any? %>
-  <p>Approving an application will set the TA's status to 'pending' and will send them an email.</p>
-  <table>
-    <% TeachingAssistant.prospective.each do |ta| %>
-      <tr>
-        <td>
-          <%= ta.name %>
-        </td>
-        <td>
-          <i class="fa fa-rocket pink"></i>
-          <%= link_to('upgrade to pending', { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }, class: 'plain-link') %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
+<div class="col-lg-12">
+  <h2>Prospective TAs</h2>
+  <div class="col-lg-8">
+    <% if TeachingAssistant.prospective.any? %>
+    <p>Approving an application will set the TA's status to pending and will send them an email.</p>
+    <table class="table table-striped table-hover">
+      <tbody>
+        <% TeachingAssistant.prospective.each do |ta| %>
+        <tr>
+          <td class="col-lg-4">
+            <%= ta.name %>
+          </td>
+          <td class="col-lg-4">
+            <i class="fa fa-rocket"></i>
+            <%= link_to('approve', { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }) %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
     <p>There are currently no prospective TAs.</p>
-<% end %>
+    <% end %>
+  </div>
+</div>
 
-<h2>Monthly Course Emails</h2>
-<p>
-  This will email all teaching assistants! Use with caution...
-  <%= link_to('Send email', { controller: :emails, action: :monthly }, method: :get, class: 'main-button default-button') %>
-</p>
+<div class="col-lg-12">
+  <h2>Monthly Course Emails</h2>
+  <p>
+    This will email all teaching assistants! Use with caution...<br /><br />
+    <%= link_to('Send email', { controller: :emails, action: :monthly }, method: :get, class: 'btn btn-info') %>
+  </p>
+</div>

@@ -4,46 +4,51 @@
   To view hour balances and history, view the individual TA.
 </p>
 
-<ul class="list">
+<div class="col-lg-10">
   <% @teaching_assistants.each do |teaching_assistant| %>
-    <li>
-      <div class="ta-name">
-        <% if teaching_assistant.approved? %>
-          <%= icon_thumbs_up %>
-        <% elsif teaching_assistant.pending? %>
-          <%= icon_hourglass %>
-        <% elsif teaching_assistant.prospective? %>
-          <%= icon_rocket %>
-        <% else %>
-          <%= icon_ban %>
-        <% end %>
+    <div class="col-lg-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <% if teaching_assistant.approved? %>
+            <%= icon_thumbs_up %>
+            <% elsif teaching_assistant.pending? %>
+            <%= icon_hourglass %>
+            <% elsif teaching_assistant.prospective? %>
+            <%= icon_rocket %>
+            <% else %>
+            <%= icon_ban %>
+            <% end %>
 
-        <%= link_to teaching_assistant.name, teaching_assistant_path(teaching_assistant.private_id), class: 'ta-name' %>
+            <%= link_to teaching_assistant.name, teaching_assistant_path(teaching_assistant.private_id) %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div>
+            Email: <%= teaching_assistant.email %>
+          </div>
+
+          <div>
+            Status: <%= teaching_assistant.status.label %>
+          </div>
+
+          <div>
+            Update status:
+            <% if teaching_assistant.prospective? %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put %>
+            <% elsif teaching_assistant.pending? %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put %>
+            <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put %>
+            <% elsif teaching_assistant.approved? %>
+            <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put %>
+            <% else %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put %>
+            <% end %>
+
+            <%= link_to icon_ban, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put %>
+          </div>
+        </div>
       </div>
-
-      <div>
-        Email: <%= teaching_assistant.email %>
-      </div>
-
-      <div>
-        Status: <%= teaching_assistant.status.label %>
-      </div>
-
-      <div>
-        Update status:
-        <% if teaching_assistant.prospective? %>
-          <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put %>
-        <% elsif teaching_assistant.pending? %>
-          <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put %>
-          <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put %>
-        <% elsif teaching_assistant.approved? %>
-          <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put %>
-        <% else %>
-          <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put %>
-        <% end %>
-
-        <%= link_to icon_ban, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put %>
-      </div>
-    </li>
+    </div>
   <% end %>
-</ul>
+</div>

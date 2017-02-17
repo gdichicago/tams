@@ -1,9 +1,13 @@
 <h2>Courses</h2>
 
-<%= link_to 'Add a course', new_course_path, class: 'main-button default-button' %>
+<%= link_to 'Add a course', new_course_path, class: 'btn btn-info' %>
 
 <br /><br />
 
-<% @courses.each do |course| %>
-  <%= render partial: 'courses/admin_view', locals: { course: course } %>
-<% end %>
+<div class="col-lg-10">
+  <% @courses.each do |course| %>
+    <div class="well well-lg col-lg-12">
+      <%= render partial: 'courses/admin_view', locals: { course: course } %>
+    </div>
+  <% end %>
+</div>

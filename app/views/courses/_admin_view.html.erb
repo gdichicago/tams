@@ -1,55 +1,71 @@
-<div class="card">
-  <h3>
-    <% if course.is_series? %>
-    <span><%= icon_code %></span>
-    <% end %>
-    <%= course.name %>
-  </h3>
+<h3>
+  <% if course.is_series? %>
+  <span><%= icon_code %></span>
+  <% end %>
+  <%= course.name %>
+</h3>
 
-  <div class="card-left">
-    <h4><%= course.pretty_date %></h4>
+<div class="card-left">
+  <h4><%= course.pretty_date %></h4>
 
-    <p>
-      <%= course.location %> from <%= course.pretty_time %>
-    </p>
+  <p>
+    <%= course.location %>
+  </p>
 
+  <p>
+    <%= course.pretty_time %>
+  </p>
+
+  <p>
     <a href="<%=course.url%>">View on Meetup <%= icon_link_out %></a>
+  </p>
 
-    <p>
-      Credit Hours: <%= course.credit_hours %>
-    </p>
-  </div>
+  <p>
+    Credit Hours: <%= course.credit_hours %>
+  </p>
+</div>
 
-  <div class="card-right">
+<div class="card-right">
+  <p>
     <h5>TAs: <%= course.num_tas %></h5>
+  </p>
 
+  <p>
     <% if course.need_tas? && !course.is_past? %>
-      <h5>Need <%= course.num_tas_still_needed %> more</h5>
+    <h5>Need <%= course.num_tas_still_needed %> more</h5>
     <% end %>
+  </p>
 
+  <p>
+    <%= link_to 'View TA List', course_ta_list_path(course), remote: true, class: 'btn btn-info' %>
+    <%= link_to 'Add TA to Course', new_hour_path, remote: true, class: 'btn btn-info' %>
+  </p>
+
+  <% if course.can_email? %>
+    <%= button_to 'Send confirmation email', { controller: :emails, action: :confirmation }, method: :get,  params: { course_id: course.id } %>
+  <% elsif course.missing_emails? %>
     <p>
-      <%= link_to 'View TA List', course_ta_list_path(course), remote: true, class: 'main-button default-button' %>
-      <%= link_to 'Add TA to Course', new_hour_path, remote: true, class: 'main-button default-button' %>
+      Warning! TAs are missing confirmation emails!
     </p>
-
-    <% if course.can_email? %>
-      <%= button_to 'Send confirmation email', { controller: :emails, action: :confirmation }, method: :get,  params: { course_id: course.id } %>
-    <% elsif course.missing_emails? %>
-      <p>
-        Warning! TAs are missing confirmation emails!
-      </p>
+    <p>
       Email sent, but some TAs are missing emails because they signed up late. Click the button below to email all TAs who haven't yet received a confirmation email.
       <%= button_to 'Re-send emails', { controller: :emails, action: :missing_confirmation }, method: :get,  params: { course_id: course.id } %>
-    <% elsif course.is_past? %>
-      No email options.
-    <% elsif course.email_sent? %>
-      Email sent.
-    <% else %>
-      Can't email yet!
-    <% end %>
-
-    <p>
-      <a href="<%=edit_course_path(course)%>">Edit <%= icon_edit %></a>
     </p>
-  </div>
+  <% elsif course.is_past? %>
+    <p>
+      No email options.
+    </p>
+  <% elsif course.email_sent? %>
+    <p>
+      Email sent.
+    </p>
+  <% else %>
+    <p>
+      Can't email yet!
+    </p>
+  <% end %>
+
+  <p>
+    <a href="<%=edit_course_path(course)%>">Edit <%= icon_edit %></a>
+  </p>
 </div>
