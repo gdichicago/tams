@@ -1,25 +1,15 @@
 <%= form_for @hour, html: { class: 'form-horizontal' } do |f| %>
-  <% if @hour.errors.any? %>
-    <h2><%= pluralize(@hour.errors.count, "error") %> prohibited this from being saved:</h2>
-
-    <ul>
-      <% @hour.errors.full_messages.each do |msg| %>
-        <li>msg</li>
-      <% end %>
-    </ul>
-  <% end %>
-
   <div class="form-group">
     <%= f.label :course_id, 'Which course?', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.select :course_id, @courses, { :include_blank => 'Course' }, class: 'form-control' %>
+      <%= f.select :course_id, @courses, { :include_blank => 'Course' }, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :teaching_assistant_id, 'Which TA?', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.select :teaching_assistant_id, @tas, {:include_blank => 'Teaching Assistant'}, class: 'form-control' %>
+      <%= f.select :teaching_assistant_id, @tas, {:include_blank => 'Teaching Assistant'}, class: 'form-control', required: true %>
     </div>
   </div>
 

@@ -13,70 +13,70 @@
   <div class="form-group">
     <%= f.label :name, 'Course name', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :date, class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.date_select :date, class: 'form-control' %>
+      <%= f.date_select :date, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :start_time, class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.time_select :start_time, class: 'form-control' %>
+      <%= f.time_select :start_time, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :end_time, class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.time_select :end_time, class: 'form-control' %>
+      <%= f.time_select :end_time, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :url, 'Meetup URL', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.text_field :url, class: 'form-control' %>
+      <%= f.text_field :url, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :location, class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.text_field :location, class: 'form-control' %>
+      <%= f.text_field :location, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :meetup_id, 'Meetup ID', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.text_field :meetup_id, class: 'form-control' %>
+      <%= f.text_field :meetup_id, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :credit_hours, 'Number of credit hours received', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.number_field :credit_hours, class: 'form-control' %>
+      <%= f.number_field :credit_hours, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :num_tas_neeed, 'Number of teaching assistants needed', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.number_field :num_tas_needed, class: 'form-control' %>
+      <%= f.number_field :num_tas_needed, class: 'form-control', required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :series_id, 'Is this course part of a series?', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.select(:series_id, @series.collect {|s| ["#{s.name} (ending #{s.pretty_end_date})", s.id]}, {:include_blank => 'Course series'}) %>
+      <%= f.select :series_id, @series.collect {|s| ["#{s.name} (ending #{s.pretty_end_date})", s.id]}, {:include_blank => 'Course series'}, required: true %>
     </div>
   </div>
 

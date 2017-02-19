@@ -1,18 +1,8 @@
 <%= form_for @series, html: { class: 'form-horizontal' } do |f| %>
-  <% if @series.errors.any? %>
-    <h2><%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:</h2>
-
-    <ul>
-      <% @series.errors.full_messages.each do |msg| %>
-        <li>msg</li>
-      <% end %>
-    </ul>
-  <% end %>
-
   <div class="form-group">
     <%= f.label :name, 'Series name', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
     </div>
   </div>
 

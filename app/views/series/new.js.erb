@@ -1,6 +1,6 @@
 $('#main').append("<%= escape_javascript(render(:partial => 'new')).html_safe %>");
-$('.modal').show();
+$('#series-modal').show();
 
-$('.modal .close').click(function(event) {
-  $('.modal').hide();
+$('#series-modal .close').click(function(event) {
+  $('#series-modal').hide();
 });
