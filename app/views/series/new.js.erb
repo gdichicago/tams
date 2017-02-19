@@ -1,2 +1,6 @@
 $('#main').append("<%= escape_javascript(render(:partial => 'new')).html_safe %>");
 $('.modal').show();
+
+$('.modal .close').click(function(event) {
+  $('.modal').hide();
+});

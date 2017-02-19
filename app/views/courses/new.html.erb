@@ -1,46 +1,38 @@
 <div class="col-lg-12">
-  <h2>Add Course, TA, or Series</h2>
+  <h2>Add a Course</h2>
 </div>
 
 <div class="col-lg-12">
   <div class="col-lg-8">
-    <h4>Provide the full Meetup URL to import all event information.</h4>
+    <div class="col-lg-12">
+      <h4>Provide the full Meetup URL to import all event information.</h4>
+    </div>
 
-    <p>
+    <div class="col-lg-12">
       <strong>Note:</strong> You will need to manually enter the following information:
-    </p>
+      <ul>
+        <li>
+          Number of credit hours received
+        </li>
+        <li>
+          Number of teaching assistants needed
+        </li>
+        <li>
+          <strong>For multi-session classes only:</strong> Select the relevant course series
+        </li>
+      </ul>
+    </div>
 
-    <ul>
-      <li>
-        Number of credit hours received
-      </li>
-      <li>
-        Number of teaching assistants needed
-      </li>
-      <li>
-        <strong>For multi-day classes only:</strong> Select the relevant course series
-      </li>
-    </ul>
-
-    <h4>Is this a multi-day course?</h4>
-
-    <p>
-      After you have added the series, come back to this page and import the course once for each session. Make sure you use the right date for each imported session! TAs sign up for sessions individually.
-    </p>
-
-    <p>
-      <h4>Quicklinks:</h4>
+    <div class="col-lg-12">
+      <h4>Is this a multi-session course?</h4>
 
       <div class="col-lg-12">
-        <div class="col-lg-2">
-          <%= link_to 'Add a new Series', new_series_path, remote: true, class: 'btn btn-success' %>
-        </div>
-
-        <div class="col-lg-2 col-lg-offset-1">
-          <%= link_to 'Add a new TA', new_teaching_assistant_path, remote: true, class: 'btn btn-success' %>
+        After you have added the series, import the course once for each session. Make sure you use the right date for each imported session! TAs sign up for sessions individually.
+        <div class="col-lg-12 col-lg-offset-11">
+          <%= link_to 'Add a series', new_series_path, remote: true, class: 'btn btn-success' %>
         </div>
       </div>
-    </p>
+    </div>
   </div>
 </div>
 

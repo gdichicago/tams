@@ -14,14 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-var ready = function() {
-  // CLOSE MODAL
-  $('#content #modal #close').click(function(event) {
-    event.preventDefault();
-    $('#modal').remove();
-  });
-};
-
-$(document).ready(ready);
-$(document).on('page:load', ready);
