@@ -9,7 +9,6 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @title = "New Course"
     render 'shared/admin_only' unless is_admin?
     @course = Course.new
     @series = Series.all
@@ -24,12 +23,13 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
-      notice = 'Course was successfully created.'
+      redirect_to courses_path, notice: 'Course was successfully created.'
     else
-      notice = 'Oh, no! Course was not successfully created.'
+      @course = Course.new
+      @series = Series.all
+      redirect_to new_course_path, notice: 'Oh, no! Course was not successfully created.'
     end
 
-    redirect_to courses_path, notice: notice
   end
 
   def update

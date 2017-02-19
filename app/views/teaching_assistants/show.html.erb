@@ -1,10 +1,58 @@
-<% if @teaching_assistant.banned? %>
-<div class="col-lg-12">
-  <h2>Hello!</h2>
+<div class="col-lg-8">
+  <% if @teaching_assistant.banned? %>
+    <div class="col-lg-12">
+      <h2>Hello!</h2>
+      <h5>You are not eligible to TA for <%= CHAPTER_NAME %>.</h5>
+    </div>
+  <% else %>
+    <div class="col-lg-12">
+      <h2>Hello, <%= @teaching_assistant.name %>!</h2>
+    </div>
 
-  <h5>You are not eligible to TA for <%= CHAPTER_NAME %>.</h5>
+    <div class="col-lg-12">
+      <h4 class="text-info">You're signed up to TA for <span class="text-warning"><%= @teaching_assistant.schedule.length %></span> upcoming classes.</h4>
+    </div>
+
+    <div class="col-lg-12">
+      <h4 class="text-info">Needs TAs: <%= pluralize(@num_available, 'class') %></h4>
+    </div>
+
+    <div class="col-lg-12">
+      <em>This is your secret sign up page. Only you (and the GDI Organizers) have access to this URL. You can sign up to TA new classes below, or change your RSVP for classes you already signed up to TA.</em>
+    </div>
+
+    <div class="col-lg-12">
+      <h4>Your Schedule</h4>
+
+      <% if @teaching_assistant.schedule.any? %>
+        <%= icon_code %> Indicates a multi-session course.
+
+        <% @teaching_assistant.schedule.each do |course| %>
+          <%= render 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant } %>
+        <% end %>
+      <% else %>
+        Looks like you're not signed up for anything right now!
+      <% end %>
+    </div>
+
+    <div class="col-lg-12">
+      <h4>Credit Hour Balance</h4>
+
+      <% if @teaching_assistant.approved? %>
+        <div class="col-lg-12">
+          <strong>Balance:</strong> <%= @teaching_assistant.balance %>
+        </div>
+        <div class="col-lg-12">
+          <strong>Pending Balance:</strong> <%= @teaching_assistant.pending_balance %>
+        </div>
+        <div class="col-lg-12">
+          <strong>To use your credit hours:</strong> Email <a href="mailto:chicago@girldevelopit.com">chicago@girldevelopit.com</a> and we will get you signed up in Meetup. Unfortunately, it's still a manual process.
+        </div>
+      <% else %>
+        <div class="col-lg-12">
+          <%= icon_exclamation %> You are not yet eligible to earn credit hours. After being a TA for 4 full classes, you will be eligible to earn credit hours toward classes.
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-<% else %>
-  //TODO
-<% end %>

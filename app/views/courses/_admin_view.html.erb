@@ -37,8 +37,8 @@
   </p>
 
   <p>
-    <%= link_to 'View TA List', course_ta_list_path(course), remote: true, class: 'btn btn-info' %>
-    <%= link_to 'Add TA to Course', new_hour_path, remote: true, class: 'btn btn-info' %>
+    <%= link_to 'View TA List', course_ta_list_path(course), remote: true, class: 'btn btn-success' %>
+    <%= link_to 'Add TA to Course', new_hour_path, remote: true, class: 'btn btn-success' %>
   </p>
 
   <% if course.can_email? %>

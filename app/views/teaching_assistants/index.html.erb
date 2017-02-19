@@ -7,18 +7,17 @@
 <div class="col-lg-10">
   <% @teaching_assistants.each do |teaching_assistant| %>
     <div class="col-lg-6">
-      <div class="panel panel-info">
+      <% if teaching_assistant.approved? %>
+        <% panel_class = 'panel-success' %>
+      <% elsif teaching_assistant.pending? || teaching_assistant.prospective? %>
+        <% panel_class = 'panel-warning' %>
+      <% else %>
+        <% panel_class = 'panel-danger' %>
+      <% end %>
+
+      <div class="panel <%= panel_class %>">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <% if teaching_assistant.approved? %>
-            <%= icon_thumbs_up %>
-            <% elsif teaching_assistant.pending? %>
-            <%= icon_hourglass %>
-            <% elsif teaching_assistant.prospective? %>
-            <%= icon_rocket %>
-            <% else %>
-            <%= icon_ban %>
-            <% end %>
 
             <%= link_to teaching_assistant.name, teaching_assistant_path(teaching_assistant.private_id) %>
           </h3>
