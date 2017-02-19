@@ -1,0 +1,31 @@
+<%= form_for @series, html: { class: 'form-horizontal' } do |f| %>
+  <% if @series.errors.any? %>
+    <h2><%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:</h2>
+
+    <ul>
+      <% @series.errors.full_messages.each do |msg| %>
+        <li>msg</li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, 'Series name', class: 'col-lg-3 control-label' %>
+    <div class="col-lg-9">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_date, class: 'col-lg-3 control-label' %>
+    <div class="col-lg-9">
+      <%= f.date_select :end_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-3">
+      <%= f.submit 'Save', class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
