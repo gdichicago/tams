@@ -1,9 +1,7 @@
 class CoursesController < ApplicationController
-
-  before_action :set_course, only: [:ta_list, :edit, :update]
+  before_action :set_course, only: [:ta_list, :edit, :update, :destroy]
 
   def index
-    @title = "Course List"
     render 'shared/admin_only' unless is_admin?
     @courses = Course.all.sort_by(&:date).reverse
   end
@@ -38,6 +36,16 @@ class CoursesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    if @course.destroy
+      notice = 'Course was successfully deleted.'
+    else
+      notice = 'Course could not be deleted. Please try again.'
+    end
+
+    redirect_to courses_path, notice: notice
   end
 
   def ta_list

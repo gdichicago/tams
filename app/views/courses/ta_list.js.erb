@@ -1,1 +1,6 @@
 $('#main').append("<%= escape_javascript(render(:partial => 'ta_list')).html_safe %>");
+$('#ta-list-modal').show();
+
+$('#ta-list-modal .close').click(function(event) {
+  $('#ta-list-modal').remove();
+});

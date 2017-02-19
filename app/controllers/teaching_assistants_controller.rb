@@ -3,7 +3,6 @@ class TeachingAssistantsController < ApplicationController
   before_action :set_status, only: [:index, :show]
 
   def index
-    @title = "TA Management"
     render 'shared/admin_only' unless is_admin?
     @teaching_assistants = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
   end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :hours, only: [:new, :edit, :create, :update, :destroy]
   post '/hours/mass_create', to: 'hours#mass_create'
 
-  resources :courses, only: [:new, :create, :index, :edit, :update]
+  resources :courses
   get '/courses/:id/ta_list', to: 'courses#ta_list', as: 'course_ta_list'
 
   get '/teaching_assistants/thanks', to: 'teaching_assistants#thanks', as: 'teaching_assistant_thanks'
