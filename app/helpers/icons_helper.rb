@@ -50,4 +50,8 @@ module IconsHelper
   def icon_meetup
     raw('<i class="fa fa-meetup"></i>')
   end
+
+  def icon_email
+    raw('<i class="fa fa-envelope"></i>')
+  end
 end

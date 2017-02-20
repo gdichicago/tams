@@ -28,7 +28,7 @@ class EmailsController < ApplicationController
     @tas.each do |ta|
       TeachingAssistantMailer.confirmation(ta, @course).deliver
     end
-    redirect_to admins_dashboard_path, notice: 'Email confirmation sent.'
+    redirect_to courses_path, notice: 'Confirmation email sent.'
   end
 
   def missing_confirmation
@@ -38,7 +38,7 @@ class EmailsController < ApplicationController
     missing_hours.map(&:teaching_assistant).each do |ta|
       TeachingAssistantMailer.confirmation(ta, @course).deliver
     end
-    redirect_to admins_dashboard_path, notice: 'Email confirmation sent.'
+    redirect_to courses_path, notice: 'Confirmation email sent.'
   end
 
   def forgot

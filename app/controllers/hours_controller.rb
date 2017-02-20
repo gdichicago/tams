@@ -7,7 +7,7 @@ class HoursController < ApplicationController
     render 'shared/admin_only' unless is_admin?
     @hour = Hour.new
     @courses = Course.all.sort_by(&:date).collect {|c| ["#{c.pretty_date} - #{c.name}", c.id]}
-    @tas = TeachingAssistant.all.sort_by(&:name).collect {|ta| [ta.name, ta.id]}
+    @tas = elligible_tas.sort_by(&:name).collect { |ta| [ta.name, ta.id] }
     respond_to do |format|
       format.html
       format.js
@@ -24,7 +24,7 @@ class HoursController < ApplicationController
     build_hour_from(@hour)
 
     if is_admin?
-      redirect_to courses_path, notice: 'Hour was successfully created.'
+      redirect_to courses_path, notice: 'TA hour(s) successfully created.'
     elsif @hour.new_record?
       redirect_to teaching_assistant_path(private_id), notice: 'Something went wrong.'
     else
@@ -40,7 +40,7 @@ class HoursController < ApplicationController
     success = build_series_hours(series, ta)
 
     if is_admin?
-      redirect_to admins_dashboard_path, notice: 'Hour was successfully created.'
+      redirect_to admins_dashboard_path, notice: 'TA hour(s) successfully created.'
     elsif success
       redirect_to teaching_assistant_path(private_id), notice: 'Got it! See you in class.'
     else
@@ -50,22 +50,23 @@ class HoursController < ApplicationController
 
   def update
     if is_admin? && @hour.update(hour_params)
-      redirect_to courses_path, notice: 'Hour was successfully updated.'
+      redirect_to courses_path, notice: 'TA hour(s) successfully updated.'
     elsif @hour.update(hour_params)
       private_id = @hour.teaching_assistant.private_id
-      redirect_to teaching_assistant_path(private_id), notice: 'RSVP was successfully updated.'
+      redirect_to teaching_assistant_path(private_id), notice: 'RSVP successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    name = @hour.course.name
-    date = @hour.course.date
+    # TODO: remove?
+    # name = @hour.course.name
+    # date = @hour.course.date
     @hour.destroy
 
     if is_admin?
-      redirect_to courses_path, notice: 'Hour was successfully removed.'
+      redirect_to courses_path, notice: 'TA hour(s) successfully removed.'
     else
       private_id = @hour.teaching_assistant.private_id
       redirect_to teaching_assistant_path(private_id), notice: "RSVP cancelled for #{name} on #{date}."
@@ -73,11 +74,15 @@ class HoursController < ApplicationController
   end
 
   private
-    def set_hour
-      @hour = Hour.find(params[:id])
-    end
+  def set_hour
+    @hour = Hour.find(params[:id])
+  end
 
-    def hour_params
-      params.require(:hour).permit(:course_id, :teaching_assistant_id, :num)
-    end
+  def hour_params
+    params.require(:hour).permit(:course_id, :teaching_assistant_id, :num)
+  end
+
+  def elligible_tas
+    @tas = TeachingAssistant.where.not(status_id: Status.inelligible_statuses)
+  end
 end

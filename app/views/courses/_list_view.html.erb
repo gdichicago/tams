@@ -33,36 +33,35 @@
 
     <div class="col-sm-6">
       <div>
-        <h5>
+        <h4>
           TAs: <%= course.num_tas %>
-          <% if course.need_tas? && !course.is_past? %>
-            <em>(<%= course.num_tas_still_needed %> more needed)</em>
-          <% end %>
-        </h5>
+        </h4>
       </div>
 
       <div>
-        Credit Hours: <%= course.credit_hours %>
+          <% if course.need_tas? && !course.is_past? %>
+            <p><em><%= pluralize(course.num_tas_still_needed, 'teaching assistant') %> needed</em></p>
+          <% end %>
+      </div>
+
+      <div>
+        <p>Credit Hours: <%= course.credit_hours %></p>
       </div>
 
       <div>
         <%= link_to 'TA list', course_ta_list_path(course), remote: true, class: 'btn btn-primary btn-sm' %>
         <%= link_to 'add TA', new_hour_path, remote: true, class: 'btn btn-primary btn-sm' %>
-      </div>
 
-      <div>
         <% if course.can_email? %>
-        <%= button_to 'Send confirmation email', { controller: :emails, action: :confirmation }, method: :get,  params: { course_id: course.id } %>
+          <%= link_to icon_email, confirmation_emails_path(course_id: course.id), class: 'btn btn-primary btn-sm' %>
+          <div class="text-warning">
+            Confirmation email is ready to be sent!
+          </div>
         <% elsif course.missing_emails? %>
-        Warning! TAs are missing confirmation emails!
-        Email sent, but some TAs are missing emails because they signed up late. Click the button below to email all TAs who haven't yet received a confirmation email.
-        <%= button_to 'Re-send emails', { controller: :emails, action: :missing_confirmation }, method: :get,  params: { course_id: course.id } %>
-        <% elsif course.is_past? %>
-        No email options.
-        <% elsif course.email_sent? %>
-        Email sent.
-        <% else %>
-        Can't email yet!
+          <%= link_to icon_email, missing_confirmation_emails_path(course_id: course.id), class: 'btn btn-primary btn-sm' %>
+          <div class="text-warning">
+            More TAs have signed up since confirmation email was sent. Please re-send!
+          </div>
         <% end %>
       </div>
     </div>
