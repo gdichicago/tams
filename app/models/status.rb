@@ -4,6 +4,6 @@ class Status < ApplicationRecord
   validates_presence_of :label
 
   def self.inelligible_statuses
-    Status.where(label: %w(banned inactive))
+    Status.where(label: %w(banned inactive prospective))
   end
 end

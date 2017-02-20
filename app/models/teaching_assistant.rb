@@ -16,8 +16,8 @@ class TeachingAssistant < ApplicationRecord
   scope :banned, -> { where status: Status.find_by_label("banned") }
   scope :prospective, -> { where status: Status.find_by_label("prospective") }
 
-  def self.active
-    self.where.not(status: [Status.find_by_label("inactive"), Status.find_by_label("banned"), Status.find_by_label("prospective")])
+  def self.elligible
+    self.where.not(status: [Status.inelligible_statuses])
   end
 
   def pending?

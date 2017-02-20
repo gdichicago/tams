@@ -7,7 +7,7 @@ class HoursController < ApplicationController
     render 'shared/admin_only' unless is_admin?
     @hour = Hour.new
     @courses = Course.all.sort_by(&:date).collect {|c| ["#{c.pretty_date} - #{c.name}", c.id]}
-    @tas = elligible_tas.sort_by(&:name).collect { |ta| [ta.name, ta.id] }
+    @tas = TeachingAssistant.elligible.sort_by(&:name).collect { |ta| [ta.name, ta.id] }
     respond_to do |format|
       format.html
       format.js
@@ -80,9 +80,5 @@ class HoursController < ApplicationController
 
   def hour_params
     params.require(:hour).permit(:course_id, :teaching_assistant_id, :num)
-  end
-
-  def elligible_tas
-    @tas = TeachingAssistant.where.not(status_id: Status.inelligible_statuses)
   end
 end
