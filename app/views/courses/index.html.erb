@@ -1,10 +1,10 @@
-<h2>Courses</h2>
+<div class="col-lg-10 col-lg-offset-1">
+  <h2>Courses</h2>
 
-<%= link_to 'add a course', new_course_path, class: 'btn btn-success' %>
+  <%= link_to 'add a course', new_course_path, class: 'btn btn-success' %>
 
-<br /><br />
+  <br /><br />
 
-<div class="col-lg-10">
   <% @courses.each do |course| %>
     <%= render partial: 'list_view', locals: { course: course } %>
   <% end %>

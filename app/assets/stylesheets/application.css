@@ -5821,6 +5821,7 @@ button.list-group-item-danger.active:focus {
   padding-bottom: 75%;
 }
 .well {
+  max-width: 80%;
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -7019,15 +7020,4 @@ a.list-group-item-danger.active:focus {
 }
 .popover {
   color: #2c3e50;
-}
-.card-left {
-  float: left;
-  width: 50%;
-  display: inline-block;
-}
-.card-right {
-  float: right;
-  width: 50%;
-  display: inline-block;
-  text-align: right;
 }

@@ -1,14 +1,6 @@
 module IconsHelper
-  def icon_add
-    raw('<i class="fa fa-plus-circle"></i>')
-  end
-
   def icon_book
     raw('<i class="fa fa-book"></i>')
-  end
-
-  def icon_check
-    raw('<i class="fa fa-check"></i>')
   end
 
   def icon_code
@@ -20,11 +12,7 @@ module IconsHelper
   end
 
   def icon_edit
-    raw('<i class="fa fa-pencil-square"></i>')
-  end
-
-  def icon_email
-    raw('<i class="fa fa-envelope"></i>')
+    raw('<i class="fa fa-pencil"></i>')
   end
 
   def icon_exclamation
@@ -39,10 +27,6 @@ module IconsHelper
     raw('<i class="fa fa-external-link"></i>')
   end
 
-  def icon_toggle_down
-    raw('<i class="fa fa-angle-down"></i>')
-  end
-
   def icon_toggle_right
     raw('<i class="fa fa-angle-right"></i>')
   end
@@ -55,23 +39,15 @@ module IconsHelper
     raw('<i class="fa fa-thumbs-up"></i>')
   end
 
-  def icon_vertical_stack
-    raw('<i class="fa fa-bars"></i>')
-  end
-
-  def icon_woman
-    raw('<i class="fa fa-female"></i>')
-  end
-
-  def icon_x
-    raw('<i class="fa fa-times"></i>')
-  end
-
   def icon_rocket
     raw('<i class="fa fa-rocket"></i>')
   end
 
-  def icon_hourglass
-    raw('<i class="fa fa-hourglass-half"></i>')
+  def icon_trash
+    raw('<i class="fa fa-trash"></i>')
+  end
+
+  def icon_meetup
+    raw('<i class="fa fa-meetup"></i>')
   end
 end
