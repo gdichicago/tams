@@ -15,6 +15,10 @@ class Course < ApplicationRecord
     where(date: 1.month.ago.beginning_of_month..Date.today)
   end
 
+  def self.future_courses
+    where('date > ?', Date.today)
+  end
+
   def student_hours
     hours = (end_time - start_time) / (60*60).to_i
     return (hours-1) if hours >= 9

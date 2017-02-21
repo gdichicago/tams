@@ -6,7 +6,7 @@ class HoursController < ApplicationController
   def new
     render 'shared/admin_only' unless is_admin?
     @hour = Hour.new
-    @courses = Course.all.sort_by(&:date).collect {|c| ["#{c.pretty_date} - #{c.name}", c.id]}
+    @courses = Course.future_courses.sort_by(&:date).collect { |c| ["#{c.pretty_date} - #{c.name}", c.id] }
     @tas = TeachingAssistant.elligible.sort_by(&:name).collect { |ta| [ta.name, ta.id] }
     respond_to do |format|
       format.html
