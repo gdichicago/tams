@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :teaching_assistants, param: :private_id, only: [:index, :new, :create, :show, :update]
 
   resources :sessions, only: [:new, :create, :destroy]
+  post '/', to: 'sessions#create'
 
   # ADMIN FUNCTIONS
   get '/dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
