@@ -13,20 +13,23 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
+          <% if is_admin? %>
+            <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'navbar-brand' %>
+          <% else %>
           <%= link_to 'GDI Volunteering', root_path, class: 'navbar-brand' %>
+          <% end %>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <ul class="nav navbar-nav">
-            <% if is_admin? %>
-              <li><%= link_to 'Dashboard', admins_dashboard_path %></li>
-              <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
-              <li><%= link_to 'Courses', courses_path %></li>
-            <% else %>
-              <li><%= link_to 'Sign Up', new_teaching_assistant_path %></li>
-              <li><%= link_to 'Admin Login', new_session_path %></li>
-            <% end %>
-          </ul>
+          <% if is_admin? %>
+            <ul class="nav navbar-nav">
+                <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
+                <li><%= link_to 'Courses', courses_path %></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete %></li>
+            </ul>
+          <% end %>
         </div>
       </div>
     </nav>
