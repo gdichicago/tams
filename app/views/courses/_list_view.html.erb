@@ -33,15 +33,13 @@
 
     <div class="col-sm-6">
       <div>
-        <h4>
-          TAs: <%= course.num_tas %>
-        </h4>
+        <h4>TAs: <%= course.num_tas %></h4>
       </div>
 
       <div>
-          <% if course.need_tas? && !course.is_past? %>
-            <p><em><%= pluralize(course.num_tas_still_needed, 'teaching assistant') %> needed</em></p>
-          <% end %>
+        <% if course.need_tas? && !course.is_past? %>
+          <p><em><%= pluralize(course.num_tas_still_needed, 'teaching assistant') %> needed</em></p>
+        <% end %>
       </div>
 
       <div>

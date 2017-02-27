@@ -60,15 +60,14 @@ class HoursController < ApplicationController
   end
 
   def destroy
-    # TODO: remove?
-    # name = @hour.course.name
-    # date = @hour.course.date
     @hour.destroy
 
     if is_admin?
       redirect_to courses_path, notice: 'TA hour(s) successfully removed.'
     else
       private_id = @hour.teaching_assistant.private_id
+      name = @hour.course.name
+      date = @hour.course.date
       redirect_to teaching_assistant_path(private_id), notice: "RSVP cancelled for #{name} on #{date}."
     end
   end

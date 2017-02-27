@@ -1,0 +1,54 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h5>
+      <% if course.is_series? %>
+        <%= icon_code %>
+      <% end %>
+
+      <%= course.name %>
+    </h5>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-sm-6">
+      <div>
+        <h5><%= course.pretty_date %></h5>
+      </div>
+
+      <div>
+        <%= course.location %>
+      </div>
+
+      <div>
+        <%= course.pretty_time %>
+      </div>
+
+      <div>
+        <%= link_to icon_meetup, course.url, class: 'btn btn-primary btn-sm' %>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+      <div>
+        <h5>TAs: <%= course.num_tas %></h5>
+      </div>
+
+      <div>
+        <% if course.need_tas? && !course.is_past? %>
+          <p><em><%= pluralize(course.num_tas_still_needed, 'teaching assistant') %> needed</em></p>
+        <% end %>
+      </div>
+
+      <div>
+        <% if !course.is_past? %>
+          <% if teaching_assistant.is_ta_for?(course) %>
+            <%= button_to 'Change RSVP to No', { controller: :hours, action: :destroy, id: course.hour_for(teaching_assistant) }, method: :delete, class: 'btn btn-success' %>
+          <% else %>
+            <%= button_to "RSVP Yes! I'll be there!", { controller: :hours, action: :create, hour: { course_id: course.id, teaching_assistant_id: teaching_assistant.id } }, method: :post, class: 'btn btn-success' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
