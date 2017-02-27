@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   # ADMIN FUNCTIONS
   get '/dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
-  get '/upcoming', to: 'admins#upcoming', as: 'admins_upcoming_courses'
 
   # EMAIL SENDS
   get '/emails/welcome', to: 'emails#welcome', as: 'welcome_emails'
