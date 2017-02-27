@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :series, only: [:new, :create]
 
   resources :hours, only: [:new, :edit, :create, :update, :destroy]
-  post '/hours/mass_create', to: 'hours#mass_create'
 
   resources :courses
   get '/courses/:id/ta_list', to: 'courses#ta_list', as: 'course_ta_list'

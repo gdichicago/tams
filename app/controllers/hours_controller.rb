@@ -32,22 +32,6 @@ class HoursController < ApplicationController
     end
   end
 
-  def mass_create
-    series = Series.find(params[:hour][:series_id])
-    ta = TeachingAssistant.find(params[:hour][:teaching_assistant_id])
-    private_id = ta.private_id
-
-    success = build_series_hours(series, ta)
-
-    if is_admin?
-      redirect_to admins_dashboard_path, notice: 'TA hour(s) successfully created.'
-    elsif success
-      redirect_to teaching_assistant_path(private_id), notice: 'Got it! See you in class.'
-    else
-      redirect_to teaching_assistant_path(private_id), notice: 'Something went wrong.'
-    end
-  end
-
   def update
     if is_admin? && @hour.update(hour_params)
       redirect_to courses_path, notice: 'TA hour(s) successfully updated.'

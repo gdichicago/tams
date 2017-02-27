@@ -23,27 +23,9 @@
   </div>
 
   <div class="col-lg-12">
-    <h3>Multi-session Courses (Series)</h3>
+    <h3>Upcoming Courses</h3>
 
-    <% if @series.any? %>
-      <% @series.each do |s| %>
-        <% if s.courses.any? %>
-          <h4><%= s.name %></h4>
-          <%= link_to "RSVP 'Yes' for all courses in this series", { controller: :hours, action: :mass_create, hour: { course_id: s.courses.first.id } }, method: :post %>
-          <% s.upcoming_courses_by_date.each do |course| %>
-            <div class="col-lg-10 col-lg-offset-1">
-              <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant } %>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% else %>
-    There aren't any multi-session courses to sign up for right now. Check back later!
-    <% end %>
-  </div>
-
-  <div class="col-lg-12">
-    <h3>Single-session Courses</h3>
+    <%= icon_code %> Indicates a multi-session course.
 
     <% if @courses.any? %>
       <% @courses.each do |course| %>
@@ -52,7 +34,7 @@
         </div>
       <% end %>
     <% else %>
-      There aren't any single-session courses to sign up for right now. Check back later!
+      There aren't any upcoming courses to sign up for right now. Check back later!
     <% end %>
   </div>
 
