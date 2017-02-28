@@ -66,6 +66,7 @@ var ready = function() {
     $('#course_start_time_5i').val(startMins);
     $('#course_end_time_4i').val(hours);
     $('#course_end_time_5i').val(minutes);
+    $('#course_description').val(data.description);
     $('#course_meetup_id').val(id);
   }
 

@@ -1,11 +1,11 @@
-<div class="panel panel-success">
+<div class="panel panel-default">
   <div class="panel-heading">
     <h3>
       <% if course.is_series? %>
         <%= icon_code %>
       <% end %>
 
-      <%= course.name %>
+      <%= link_to course.name, course_path(course) %>
     </h3>
   </div>
 

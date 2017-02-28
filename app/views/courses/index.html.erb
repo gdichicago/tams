@@ -5,8 +5,16 @@
 
   <br /><br />
 
-  <% @courses.each do |course| %>
-    <div class="col-lg-10 col-lg-offset-1">
+  <h3>Upcoming</h3>
+  <% @upcoming.each do |course| %>
+    <div class="col-lg-12">
+      <%= render partial: 'list_view', locals: { course: course } %>
+    </div>
+  <% end %>
+
+  <h3>Past</h3>
+  <% @past.each do |course| %>
+    <div class="col-lg-12">
       <%= render partial: 'list_view', locals: { course: course } %>
     </div>
   <% end %>

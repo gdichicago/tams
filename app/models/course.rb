@@ -8,6 +8,7 @@ class Course < ApplicationRecord
   validates_presence_of :credit_hours, :num_tas_needed, :name, :date, :url, :location, :meetup_id, :start_time, :end_time, :pretty_time, :pretty_date
 
   scope :upcoming, -> { where("date > ?", Date.yesterday) }
+  scope :past, -> { where("date < ?", Date.today) }
 
   def self.last_month
     where(date: 1.month.ago.beginning_of_month..Date.today)

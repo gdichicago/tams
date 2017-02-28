@@ -1,19 +1,15 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:ta_list, :edit, :update, :destroy]
+  before_action :set_course, only: [:ta_list, :show, :edit, :update, :destroy]
 
   def index
     render 'shared/admin_only' unless is_admin?
-    @courses = Course.all.sort_by(&:date).reverse
+    @upcoming = Course.upcoming.sort_by(&:date).reverse
+    @past = Course.past.sort_by(&:date).reverse
   end
 
   def new
     render 'shared/admin_only' unless is_admin?
     @course = Course.new
-    @series = Series.all
-  end
-
-  def edit
-    render 'shared/admin_only' unless is_admin?
     @series = Series.all
   end
 
@@ -27,7 +23,14 @@ class CoursesController < ApplicationController
       @series = Series.all
       redirect_to new_course_path, notice: 'Oh, no! Course was not successfully created.'
     end
+  end
 
+  def show
+  end
+
+  def edit
+    render 'shared/admin_only' unless is_admin?
+    @series = Series.all
   end
 
   def update
