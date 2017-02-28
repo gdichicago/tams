@@ -5,9 +5,15 @@
 
   <%= link_to course.name, course_path(course) %>
 </td>
+
 <td>
   <%= course.pretty_date %>
 </td>
+
+<td>
+  <%= course.num_tas_still_needed %>
+</td>
+
 <td>
   <%= link_to icon_meetup, course.url, class: 'btn btn-primary btn-sm' %>
   <%= link_to icon_edit, edit_course_path(course), class: 'btn btn-primary btn-sm' %>
