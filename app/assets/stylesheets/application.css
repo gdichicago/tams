@@ -12,6 +12,28 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/* CUSTOM */
+.animated {
+  padding-top:95px;
+  margin-bottom:60px;
+  -webkit-animation-duration: 5s;animation-duration: 5s;
+  -webkit-animation-fill-mode: both;animation-fill-mode: both;
+}
+@-webkit-keyframes fade-out {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+@keyframes fade-out {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+.fade-out {
+  -webkit-animation-name: fade-out;
+  animation-name: fade-out;
+}
+
+/* BOOTSTRAP */
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5034,6 +5056,9 @@ a.thumbnail.active {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  position: absolute;
+  left: 10%;
+  right: 10%;
 }
 .alert h4 {
   margin-top: 0;
