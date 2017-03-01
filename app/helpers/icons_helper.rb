@@ -1,34 +1,10 @@
 module IconsHelper
-  def icon_book
-    raw('<i class="fa fa-book"></i>')
-  end
-
-  def icon_code
-    raw('<i class="fa fa-code"></i>')
-  end
-
   def icon_ban
     raw('<i class="fa fa-ban"></i>')
   end
 
   def icon_edit
     raw('<i class="fa fa-pencil"></i>')
-  end
-
-  def icon_exclamation
-    raw('<i class="fa fa-exclamation-triangle"></i>')
-  end
-
-  def icon_history
-    raw('<i class="fa fa-history"></i>')
-  end
-
-  def icon_link_out
-    raw('<i class="fa fa-external-link"></i>')
-  end
-
-  def icon_toggle_right
-    raw('<i class="fa fa-angle-right"></i>')
   end
 
   def icon_thumbs_down
