@@ -1,5 +1,3 @@
-# TODO: RESQUE SETUP
-
 Rails.application.routes.draw do
   root 'sessions#new'
 

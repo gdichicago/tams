@@ -1,5 +1,4 @@
 class TeachingAssistantMailer < ActionMailer::Base
-  include Resque::Mailer
 
   default from: %Q["#{FROM_EMAIL_NAME}" <#{FROM_EMAIL}>]
   layout 'mailer'

@@ -40,8 +40,7 @@ gem 'bourbon', '~> 4.2', '>= 4.2.7'
 gem 'neat', '~> 1.8'
 gem 'bitters', '~> 1.2'
 
-gem 'resque', '~> 1.26'
-gem 'resque_mailer', '~> 2.4', '>= 2.4.1'
+gem 'sendgrid-ruby'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
