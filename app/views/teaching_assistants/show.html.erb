@@ -3,7 +3,7 @@
 <% if @teaching_assistant.banned? %>
   <h5>You are not eligible to TA for <%= CHAPTER_NAME %> at this time.</h5>
 <% else %>
-  <h3>You're signed up to TA for <span class="text-info"><%= @teaching_assistant.schedule.length %> upcoming classes</span>. We need TAs for <span class="text-info"><%= pluralize(@num_available, 'class') %></span>.</h3>
+  <h3>You're signed up to TA for <span class="text-primary"><%= @teaching_assistant.schedule.length %> upcoming classes</span>. We need TAs for <span class="text-primary"><%= pluralize(@num_available, 'class') %></span>.</h3>
 
   <em>This is your secret sign up page. Only you (and the GDI Organizers) have access to this URL. You can sign up to TA new classes below, or change your RSVP for classes you already signed up to TA.</em>
 
@@ -12,11 +12,23 @@
 
     <% if @teaching_assistant.schedule.any? %>
       <%= icon_code %> Indicates a multi-session course.
-      <% @teaching_assistant.schedule.each do |course| %>
-        <div class="col-lg-10 col-lg-offset-1">
-          <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant } %>
-        </div>
-      <% end %>
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teaching_assistant.schedule.each do |course| %>
+            <tr>
+              <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant } %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% else %>
       Looks like you're not signed up for anything right now!
     <% end %>
@@ -28,11 +40,22 @@
     <%= icon_code %> Indicates a multi-session course.
 
     <% if @courses.any? %>
-      <% @courses.each do |course| %>
-        <div class="col-lg-10 col-lg-offset-1">
-          <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant } %>
-        </div>
-      <% end %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courses.each do |course| %>
+            <tr>
+              <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: @teaching_assistant } %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% else %>
       There aren't any upcoming courses to sign up for right now. Check back later!
     <% end %>
@@ -60,7 +83,7 @@
     <% else %>
       <h3>Deactivate My Account</h3>
       <strong>Important Note:</strong> This will mark you as inactive in our system. Your history and contact details will still exist in our TA database, but you will no longer receive emails. You can reactivate your account at any time by visiting this page.
-      <%= button_to 'deactivate', { controller: :teaching_assistants, action: :update, private_id: @teaching_assistant.private_id, teaching_assistant: { status_id: @inactive.id } }, method: :put, class: 'btn btn-success' %>
+      <%= button_to 'deactivate', { controller: :teaching_assistants, action: :update, private_id: @teaching_assistant.private_id, teaching_assistant: { status_id: @inactive.id } }, method: :put, class: 'btn btn-warning' %>
     <% end %>
   </div>
 
