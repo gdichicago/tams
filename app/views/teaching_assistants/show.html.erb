@@ -8,7 +8,7 @@
   <em>This is your secret sign up page. Only you (and the GDI Organizers) have access to this URL. You can sign up to TA new classes below, or change your RSVP for classes you already signed up to TA.</em>
 
   <div class="col-lg-12">
-    <h3>Your Schedule</h3>
+    <h3 class="text-primary">My Schedule</h3>
 
     <% if @teaching_assistant.schedule.any? %>
       <%= icon_code %> Indicates a multi-session course.
@@ -35,7 +35,7 @@
   </div>
 
   <div class="col-lg-12">
-    <h3>Upcoming Courses</h3>
+    <h3 class="text-primary">Upcoming Courses</h3>
 
     <%= icon_code %> Indicates a multi-session course.
 
@@ -62,7 +62,7 @@
   </div>
 
   <div class="col-lg-12">
-    <h3>Your History</h3>
+    <h3 class="text-primary">My History</h3>
 
     <% if @teaching_assistant.history.empty? %>
       You haven't TA'd for any courses yet.
@@ -87,12 +87,14 @@
 
   <div class="col-lg-12">
     <% if @teaching_assistant.inactive? %>
-      <h3>Re-activate My Account</h3>
+      <h3 class="text-primary">Re-activate My Account</h3>
       Maybe we're being presumptuous, but welcome back!
+      <br /><br />
       <%= button_to 're-activate', { controller: :teaching_assistants, action: :update, id: @teaching_assistant, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'btn btn-primary' %>
     <% else %>
-      <h3>Deactivate My Account</h3>
+      <h3 class="text-primary">Deactivate My Account</h3>
       <strong>Important Note:</strong> This will mark you as inactive in our system. Your history and contact details will still exist in our TA database, but you will no longer receive emails. You can reactivate your account at any time by visiting this page.
+      <br /><br />
       <%= button_to 'deactivate', { controller: :teaching_assistants, action: :update, private_id: @teaching_assistant.private_id, teaching_assistant: { status_id: @inactive.id } }, method: :put, class: 'btn btn-warning' %>
     <% end %>
   </div>

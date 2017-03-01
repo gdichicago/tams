@@ -1,5 +1,5 @@
 <div class="col-lg-10 col-lg-offset-1">
-  <h2>Add a Course</h2>
+  <h2>New Course</h2>
 
   <strong>Note:</strong> You will need to manually enter the following information:
   <ul>
@@ -18,12 +18,16 @@
 
   After you have added the series, import the course once for each session. Make sure you use the right date for each imported session! TAs sign up for sessions individually.
 
+  <br /><br />
+
   <div>
-    <%= link_to 'add a series', new_series_path, remote: true, class: 'btn btn-primary' %>
+    <%= link_to 'new series', new_series_path, remote: true, class: 'btn btn-primary' %>
   </div>
 
+  <br />
+
   <div class="form-horizontal">
-    <h4>Import from Meetup</h4>
+    <h3>Import from Meetup</h3>
 
     <div class="form-group">
       <%= label_tag :url, 'Meetup URL', class: 'col-lg-3 control-label' %>
@@ -39,7 +43,7 @@
     </div>
   </div>
 
-  <h4>Imported Meetup</h4>
+  <h3>Imported Meetup</h3>
 
   <%= render 'form' %>
 </div>

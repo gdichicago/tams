@@ -4,6 +4,10 @@
   <% if TeachingAssistant.prospective.any? %>
     <p>Approving an application will send them an email and set the TA's status to pending.</p>
     <table class="table table-striped table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Options</th>
+      </thead>
       <tbody>
         <% TeachingAssistant.prospective.each do |ta| %>
         <tr>
@@ -11,8 +15,7 @@
             <%= ta.name %>
           </td>
           <td class="col-lg-4">
-            <i class="fa fa-rocket"></i>
-            <%= link_to('approve', { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }) %>
+            <%= link_to(icon_rocket + ' upgrade to pending', { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }) %>
           </td>
         </tr>
         <% end %>

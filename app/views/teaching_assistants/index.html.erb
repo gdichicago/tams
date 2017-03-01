@@ -7,7 +7,7 @@
 <% @teaching_assistants.each do |teaching_assistant| %>
   <div class="col-lg-4 col-md-6">
     <% if teaching_assistant.approved? %>
-      <% panel_class = 'panel-success' %>
+      <% panel_class = 'panel-primary' %>
     <% elsif teaching_assistant.pending? || teaching_assistant.prospective? %>
       <% panel_class = 'panel-warning' %>
     <% else %>
@@ -22,27 +22,26 @@
       </div>
       <div class="panel-body">
         <div>
-          Email: <%= teaching_assistant.email %>
+          <strong>Email:</strong> <%= teaching_assistant.email %>
         </div>
 
         <div>
-          Status: <%= teaching_assistant.status.label %>
+          <strong>Status:</strong> <%= teaching_assistant.status.label %>
         </div>
 
         <div>
-          Update status:
           <% if teaching_assistant.prospective? %>
-            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'btn btn-primary btn-xs' %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'text-primary' %>
           <% elsif teaching_assistant.pending? %>
-            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put, class: 'btn btn-primary btn-xs' %>
-            <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put, class: 'btn btn-primary btn-xs' %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put, class: 'text-primary' %>
+            <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put, class: 'text-primary' %>
           <% elsif teaching_assistant.approved? %>
-            <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'btn btn-primary btn-xs' %>
+            <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'text-primary' %>
           <% else %>
-            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put, class: 'btn btn-primary btn-xs' %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @approved.id } }, method: :put, class: 'text-primary' %>
           <% end %>
 
-          <%= link_to icon_ban, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put, class: 'btn btn-primary btn-xs' %>
+          <%= link_to icon_ban, { controller: :teaching_assistants, action: :update, private_id: teaching_assistant.private_id, teaching_assistant: { status_id: @banned.id } }, method: :put, class: 'text-primary' %>
         </div>
       </div>
     </div>

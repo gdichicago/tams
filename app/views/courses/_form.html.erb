@@ -72,7 +72,7 @@
   <div class="form-group">
     <%= f.label :series_id, 'Is this course part of a series?', class: 'col-lg-3 control-label' %>
     <div class="col-lg-9">
-      <%= f.select :series_id, @series.collect {|s| ["#{s.name} (ending #{s.pretty_end_date})", s.id]}, {:include_blank => 'Course series'}, required: true %>
+      <%= f.select :series_id, @series.collect {|s| ["#{s.name} (ending #{s.pretty_end_date})", s.id]}, {:include_blank => 'Course series'} %>
     </div>
   </div>
 
