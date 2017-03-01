@@ -3,8 +3,6 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  resources :series, only: [:new, :create]
-
   resources :hours, only: [:new, :edit, :create, :update, :destroy]
 
   resources :courses
