@@ -1,7 +1,6 @@
 class Course < ApplicationRecord
   before_validation :format_pretty_dates
 
-  belongs_to :series
   has_many :hours, dependent: :destroy
   has_many :teaching_assistants, through: :hours
 
@@ -34,10 +33,6 @@ class Course < ApplicationRecord
 
   def is_past?
     date < Date.today
-  end
-
-  def is_series?
-    series.present?
   end
 
   def need_tas?

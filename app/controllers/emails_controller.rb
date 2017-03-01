@@ -14,7 +14,7 @@ class EmailsController < ApplicationController
 
   def monthly
     month = Date.today.strftime("%B")
-    courses = Course.upcoming.includes(:series).sort_by(&:date)
+    courses = Course.upcoming.sort_by(&:date)
     @tas.each do |ta|
       TeachingAssistantMailer.monthly(ta, courses, month).deliver
     end

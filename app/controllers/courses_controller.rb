@@ -10,7 +10,6 @@ class CoursesController < ApplicationController
   def new
     render 'shared/admin_only' unless is_admin?
     @course = Course.new
-    @series = Series.all
   end
 
   def create
@@ -20,7 +19,6 @@ class CoursesController < ApplicationController
       redirect_to courses_path, notice: 'Course was successfully created.'
     else
       @course = Course.new
-      @series = Series.all
       redirect_to new_course_path, notice: 'Oh, no! Course was not successfully created.'
     end
   end
@@ -30,7 +28,6 @@ class CoursesController < ApplicationController
 
   def edit
     render 'shared/admin_only' unless is_admin?
-    @series = Series.all
   end
 
   def update
@@ -64,6 +61,6 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:name, :date, :url, :location, :description, :num_tas_needed, :meetup_id, :credit_hours, :series_id, :start_time, :end_time, :email_sent)
+      params.require(:course).permit(:name, :date, :url, :location, :description, :num_tas_needed, :meetup_id, :credit_hours, :start_time, :end_time, :email_sent)
     end
 end

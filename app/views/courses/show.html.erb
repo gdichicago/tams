@@ -1,9 +1,5 @@
 <div>
   <h1 class="text-primary">
-    <% if @course.is_series? %>
-      <%= icon_code %>
-    <% end %>
-
     <%= @course.name %>
     <%= link_to icon_meetup, @course.url, class: 'text-primary' %>
   </h1>
