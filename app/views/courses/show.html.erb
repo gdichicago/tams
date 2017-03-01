@@ -1,16 +1,17 @@
 <div>
-  <h1>
+  <h1 class="text-primary">
     <% if @course.is_series? %>
       <%= icon_code %>
     <% end %>
 
     <%= @course.name %>
-    <%= link_to icon_meetup, @course.url %>
+    <%= link_to icon_meetup, @course.url, class: 'text-primary' %>
   </h1>
 </div>
 
 <% if is_admin? %>
   <div class="col-lg-3">
+    <br />
     <p>
       <%= pluralize(@course.num_tas, 'teaching assistant') %>
 
@@ -44,9 +45,9 @@
 <% end %>
 
 <div class="col-lg-8">
-  <h2><%= @course.pretty_date %></h2>
-  <h4><%= @course.location %></h4>
-  <h5><%= @course.pretty_time %></h5>
+  <h2 class="text-primary"><%= @course.pretty_date %></h2>
+  <h4 class="text-primary"><%= @course.location %></h4>
+  <h5 class="text-primary"><%= @course.pretty_time %></h5>
   <br />
   <%= raw(@course.description) %>
 </div>

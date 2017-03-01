@@ -67,11 +67,21 @@
     <% if @teaching_assistant.history.empty? %>
       You haven't TA'd for any courses yet.
     <% else %>
-      <% @teaching_assistant.history.each do |hour| %>
-        <div class="col-lg-10 col-lg-offset-1">
-          <%= render partial: 'courses/ta_view', locals: { course: hour.course, teaching_assistant: @teaching_assistant } %>
-        </div>
-      <% end %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teaching_assistant.history.each do |hour| %>
+            <tr>
+              <%= render partial: 'courses/ta_view', locals: { course: hour.course, teaching_assistant: @teaching_assistant } %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </div>
 
@@ -79,7 +89,7 @@
     <% if @teaching_assistant.inactive? %>
       <h3>Re-activate My Account</h3>
       Maybe we're being presumptuous, but welcome back!
-      <%= button_to 're-activate', { controller: :teaching_assistants, action: :update, id: @teaching_assistant, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'btn btn-success' %>
+      <%= button_to 're-activate', { controller: :teaching_assistants, action: :update, id: @teaching_assistant, teaching_assistant: { status_id: @pending.id } }, method: :put, class: 'btn btn-primary' %>
     <% else %>
       <h3>Deactivate My Account</h3>
       <strong>Important Note:</strong> This will mark you as inactive in our system. Your history and contact details will still exist in our TA database, but you will no longer receive emails. You can reactivate your account at any time by visiting this page.
