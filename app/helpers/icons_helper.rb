@@ -54,4 +54,12 @@ module IconsHelper
   def icon_email
     raw('<i class="fa fa-envelope"></i>')
   end
+
+  def icon_plus
+    raw('<i class="fa fa-plus"></i>')
+  end
+
+  def icon_list
+    raw('<i class="fa fa-list-alt"></i>')
+  end
 end

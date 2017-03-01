@@ -14,9 +14,6 @@ class HoursController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def create
     @hour = Hour.new(hour_params)
     private_id = @hour.teaching_assistant.private_id
@@ -30,6 +27,9 @@ class HoursController < ApplicationController
     else
       redirect_to teaching_assistant_path(private_id), notice: 'Got it! See you in class.'
     end
+  end
+
+  def edit
   end
 
   def update

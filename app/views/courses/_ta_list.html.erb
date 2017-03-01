@@ -11,29 +11,22 @@
         <% else %>
           <table class="table table-striped table-hover">
             <thead>
-              <td>TA/Student</td>
-              <td>Name</td>
-              <td>Options</td>
+              <th>Name</th>
+              <th>Options</th>
             </thead>
             <tbody>
               <% @course.teaching_assistants.each do |ta| %>
               <tr>
-                <td class="col-lg-2">
-                  <%= ta.signed_up_for(@course) %>
-                </td>
-                <td class="col-lg-4">
+                <td>
                   <%= link_to ta.name, teaching_assistant_path(ta.private_id) %>
                 </td>
-                <td class="col-lg-6">
-                  <% if ta.is_ta_for?(@course) %>
-                    <%= link_to icon_book + ' Use hours', { controller: :hours, action: :update, id: @course.hour_for(ta), hour: { num: -@course.student_hours } }, method: :put, class: "btn btn-primary btn-xs" %>
-                  <% else %>
-                    <%= link_to icon_history + ' Make TA', { controller: :hours, action: :update, id: @course.hour_for(ta), hour: { num: @course.credit_hours } }, method: :put, class: "btn btn-primary btn-xs" %>
-                  <% end %>
-                    <%= link_to icon_ban + ' Remove', { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, class: "btn btn-primary btn-xs" %>
+
+                <td>
                   <% if ta.missing_email_for?(@course) %>
-                    <span class="btn btn-primary btn-xs">Missing Email</span>
+                    <span class="btn btn-primary btn-xs">Needs Email</span>
                   <% end %>
+                  
+                  <%= link_to icon_trash, { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, class: "btn btn-primary btn-xs" %>
                 </td>
               </tr>
               <% end %>
