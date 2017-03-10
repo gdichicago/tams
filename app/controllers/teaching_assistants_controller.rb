@@ -30,12 +30,12 @@ class TeachingAssistantsController < ApplicationController
       why: params[:why]
     }
 
-    TeachingAssistantMailer.pending(@teaching_assistant).deliver! if @teaching_assistant.save
+    TeachingAssistantMailer.pending(@teaching_assistant).deliver if @teaching_assistant.save
 
     if @teaching_assistant.save && is_admin?
       redirect_to admins_dashboard_path, notice: "TA #{@teaching_assistant.name} successfully added and marked as prospective. Remember to process their application!"
     else
-      AdminMailer.new_ta(@teaching_assistant, screeners).deliver!
+      AdminMailer.new_ta(@teaching_assistant, screeners).deliver
       redirect_to teaching_assistant_thanks_path
     end
   end

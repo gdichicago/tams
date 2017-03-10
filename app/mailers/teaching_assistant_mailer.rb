@@ -16,7 +16,7 @@ class TeachingAssistantMailer < ActionMailer::Base
   def monthly(ta, courses, month)
     @ta = ta
     @courses = courses
-    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: Monthly TA sign ups - #{month}!")
+    mail(to: @ta['email'], subject: "#{CHAPTER_NAME} Upcoming TA Opportunities")
   end
 
   def confirmation(ta, course)
