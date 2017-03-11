@@ -1,51 +1,53 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
     <td style="color: #2a4758; font-family: Arial, sans-serif; font-size: 24px;">
-      <b>Lorem ipsum dolor sit amet!</b>
+      <b>Hello, <%= @ta['name'] %>!</b>
     </td>
   </tr>
   <tr>
     <td style="padding: 20px 0 30px 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
+      We hope you're doing well. This is your friendly reminder to sign up to TA for upcoming Girl Develop It Chicago courses.
+    </td>
+
+    <td style="padding: 20px 0 30px 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+      Additional course information is below, and can also be found on your private sign up page.
     </td>
   </tr>
+
   <tr>
-    <td>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr>
-          <td width="260" valign="top">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-              <tr>
-                <td>
-                  <img src="images/left.gif" alt="" width="100%" height="140" style="display: block;" />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 25px 0 0 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td style="font-size: 0; line-height: 0;" width="20">
-            &nbsp;
-          </td>
-          <td width="260" valign="top">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-              <tr>
-                <td>
-                  <img src="images/right.gif" alt="" width="100%" height="140" style="display: block;" />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 25px 0 0 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+    <td style="padding: 20px 0 30px 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+      <h3>Sign Up</h3>
+
+      <%= button_to("View private sign up page", "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}") %>
+    </td>
+
+    <td style="padding: 20px 0 30px 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+      Or copy this link into your browser:
+      <br />
+      <%= "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 20px 0 30px 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+      <h3>Upcoming Courses</h3>
+
+      <p>
+        For additional information about the course, click the course name to go to its Meetup page.
+      </p>
+
+      <% @courses.each do |course| %>
+        <p>
+          <h4><%= link_to course['name'], course['url'] %></h4>
+          <%= course['date'] %> at <%= course['location'] %>
+        </p>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 20px 0 30px 0; color: #2a4758; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+      This email was sent because you signed up with <%= link_to CHAPTER_NAME, BASE_URL %> as a volunteer TA. To remove your self from this list, visit your private sign up page and mark yourself as inactive.
     </td>
   </tr>
 </table>
