@@ -16,6 +16,7 @@ class TeachingAssistantMailer < ActionMailer::Base
   def monthly(ta, courses, month)
     @ta = ta
     @courses = courses
+    attachments.inline['circle_gdi_logo.png'] = File.read('/app/assets/images/circle_gdi_logo.png')
     mail(to: @ta['email'], subject: "#{CHAPTER_NAME} Upcoming TA Opportunities")
   end
 
