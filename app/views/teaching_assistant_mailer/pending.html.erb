@@ -1,4 +1,4 @@
-<h3>Hello, <%= @ta['name'] %>!</h3>
+<h4>Hello, <%= @ta['name'] %>!</h4>
 
 <p>
   Thanks for signing up to volunteer as a TA with Girl Develop It Chicago! Your application has been received and will be reviewed by your chapter leaders.
@@ -8,6 +8,18 @@
   Once your application is processed, you will receive a confirmation email with instructions on signing up to volunteer for classes.
 </p>
 
+<p>
+  Cheers,
+</p>
+
+<p>
+  <%= CHAPTER_NAME %>
+</p>
+
+<p>
+  <%= image_tag("circle-gdi-logo.png", size: "100x100", alt: "Girl Develop It") %>
+</p>
+
 <p class="small">
-  This email was sent because you signed up with <a href="http://#{BASE_URL}"><%= CHAPTER_NAME %></a> as a volunteer TA.
+  <em>This email was sent because you signed up with <a href="http://#{BASE_URL}"><%= CHAPTER_NAME %></a> as a volunteer TA.</em>
 </p>

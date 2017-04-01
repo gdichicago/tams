@@ -35,9 +35,8 @@
 #main {
   margin-bottom: 50px;
 }
-#email-container {
+#email-container p {
   color: #2a4758;
-  width: 85%;
 }
 #email-container a {
   color: #f95a61;
@@ -108,7 +107,7 @@ mark {
   color: #000;
 }
 small {
-  font-size: 80%;
+  font-size: 75%;
 }
 sub,
 sup {
