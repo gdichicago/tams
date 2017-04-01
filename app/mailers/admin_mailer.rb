@@ -9,6 +9,6 @@ class AdminMailer < ActionMailer::Base
     @about = screeners[:about] || 'Answer not provided.'
     @how = screeners[:how] || 'Answer not provided.'
     @why = screeners[:why] || 'Answer not provided.'
-    mail(subject: "#{CHAPTER_NAME}: New TA application received")
+    mail(subject: "[#{CHAPTER_NAME}] New TA application received")
   end
 end

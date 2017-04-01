@@ -11,6 +11,7 @@ class TeachingAssistantMailer < ActionMailer::Base
   def pending(ta)
     @ta = ta
     mail(to: @ta['email'], subject: "[#{CHAPTER_NAME}] Your TA application has been received")
+    attachments.inline['logo.png'] = File.read('/app/assets/images/circle-gdi-logo.png')
   end
 
   def monthly(ta, courses, month)
