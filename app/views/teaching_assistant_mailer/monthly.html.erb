@@ -14,7 +14,7 @@
   <ul>
     <% @courses.each do |course| %>
       <li>
-        <%= link_to course['name'], course['url'] %> on <%= course['date'] %>
+        <%= link_to course['name'], course['url'] %> - <%= course['pretty_time'] %> on <%= course['pretty_date'] %>
       </li>
     <% end %>
   </ul>
