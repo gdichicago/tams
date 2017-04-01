@@ -4,6 +4,16 @@
   A little birdy told us that you lost your private sign up page. Here it is!
 </p>
 
-<%= render partial: 'private_signup', locals: { ta: @ta } %>
+<p>
+  <%= button_to("View private sign up page", "http://#{BASE_URL}/teaching_assistants/#{ta['private_id']}", class: "button") %>
+</p>
+
+<p>
+  Or copy this link into your browser:
+</p>
+
+<p>
+  <%= "http://#{BASE_URL}/teaching_assistants/#{ta['private_id']}" %>
+</p>
 
 <%= render partial: 'email_footer', locals: { image_url: attachments['logo.png'].url } %>
