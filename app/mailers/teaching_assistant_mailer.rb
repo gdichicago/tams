@@ -5,28 +5,22 @@ class TeachingAssistantMailer < ActionMailer::Base
 
   def welcome(ta)
     @ta = ta
-    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: Your TA application is approved!")
+    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: Your TA application has been approved!")
   end
 
   def pending(ta)
     @ta = ta
-    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: Application received")
+    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: TA application received")
   end
 
   def monthly(ta, courses, month)
     @ta = ta
     @courses = courses
-    mail(to: @ta['email'], subject: "#{CHAPTER_NAME} Upcoming TA Opportunities")
-  end
-
-  def confirmation(ta, course)
-    @ta = ta
-    @course = course
-    mail(to: @ta['email'], subject: "TA Confirmation: #{course['name']}")
+    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: Upcoming TA Opportunities")
   end
 
   def forgot(ta)
     @ta = ta
-    mail(to: @ta['email'], subject: "Here's your private sign up page")
+    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: Here's your private sign up page")
   end
 end

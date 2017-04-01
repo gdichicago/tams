@@ -22,10 +22,6 @@
                 </td>
 
                 <td>
-                  <% if ta.missing_email_for?(@course) %>
-                    <span class="btn btn-primary btn-xs">Needs Email</span>
-                  <% end %>
-                  
                   <%= link_to icon_trash, { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, class: "btn btn-primary btn-xs" %>
                 </td>
               </tr>
