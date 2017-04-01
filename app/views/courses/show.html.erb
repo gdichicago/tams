@@ -21,18 +21,6 @@
     <% if !@course.is_past? %>
       <%= link_to icon_edit, edit_course_path(@course), class: 'btn btn-primary btn-sm' %>
       <%= link_to icon_trash, { controller: :courses, action: :destroy, id: @course }, method: :delete, class: 'btn btn-primary btn-sm' %>
-
-      <% if @course.can_email? %>
-        <%= link_to icon_email, confirmation_emails_path(course_id: @course.id), class: 'btn btn-primary btn-sm' %>
-        <div class="text-warning">
-          Confirmation email is ready to be sent!
-        </div>
-      <% elsif @course.missing_emails? %>
-        <%= link_to icon_email, missing_confirmation_emails_path(course_id: @course.id), class: 'btn btn-primary btn-sm' %>
-        <div class="text-warning">
-          More TAs have signed up since confirmation email was sent. Please re-send!
-        </div>
-      <% end %>
     <% end %>
 
     <p>Credit Hours: <%= @course.credit_hours %></p>

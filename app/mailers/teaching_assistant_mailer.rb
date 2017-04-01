@@ -19,12 +19,6 @@ class TeachingAssistantMailer < ActionMailer::Base
     mail(to: @ta['email'], subject: "#{CHAPTER_NAME} Upcoming TA Opportunities")
   end
 
-  def confirmation(ta, course)
-    @ta = ta
-    @course = course
-    mail(to: @ta['email'], subject: "TA Confirmation: #{course['name']}")
-  end
-
   def forgot(ta)
     @ta = ta
     mail(to: @ta['email'], subject: "Here's your private sign up page")

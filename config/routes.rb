@@ -18,6 +18,4 @@ Rails.application.routes.draw do
   # EMAIL SENDS
   get '/emails/welcome', to: 'emails#welcome', as: 'welcome_emails'
   get '/emails/monthly', to: 'emails#monthly', as: 'monthly_emails'
-  get '/emails/confirmation', to: 'emails#confirmation', as: 'confirmation_emails'
-  get '/emails/missing_confirmation', to: 'emails#missing_confirmation', as: 'missing_confirmation_emails'
 end
