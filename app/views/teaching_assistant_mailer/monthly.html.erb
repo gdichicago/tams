@@ -35,6 +35,4 @@
   <%= "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}" %>
 </p>
 
-<p>
-  This email was sent to you because you signed up with <%= link_to CHAPTER_NAME, BASE_URL %> as a volunteer TA. To remove yourself from this list, visit your private sign up page and mark yourself as inactive.
-</p>
+<%= render partial: 'email_footer', locals: { image_url: attachments['logo.png'].url } %>

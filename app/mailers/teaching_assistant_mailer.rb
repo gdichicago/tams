@@ -1,7 +1,6 @@
 class TeachingAssistantMailer < ActionMailer::Base
-  add_template_helper(EmailsHelper)
-
   default from: %Q["#{FROM_EMAIL_NAME}" <#{FROM_EMAIL}>]
+  before_action :attach_gdi_logo
   layout 'mailer'
 
   def welcome(ta)
@@ -11,7 +10,6 @@ class TeachingAssistantMailer < ActionMailer::Base
 
   def pending(ta)
     @ta = ta
-    attachments['logo.png'] = File.read(Rails.root.join("app/assets/images/circle-gdi-logo.png"))
     mail(to: @ta['email'], subject: "[#{CHAPTER_NAME}] Your TA application has been received")
   end
 
@@ -24,5 +22,10 @@ class TeachingAssistantMailer < ActionMailer::Base
   def forgot(ta)
     @ta = ta
     mail(to: @ta['email'], subject: "[#{CHAPTER_NAME}] Here's your private sign up page")
+  end
+
+  private
+  def attach_gdi_logo
+    attachments['logo.png'] = File.read(Rails.root.join("app/assets/images/circle-gdi-logo.png"))
   end
 end
