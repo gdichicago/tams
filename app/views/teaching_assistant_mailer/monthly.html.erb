@@ -1,27 +1,30 @@
-<h1><strong>Hello, <%= @ta['name'] %>!</strong></h1>
+<h1>Hello, <%= @ta['name'] %>!</h1>
 
-<p>
+<div>
   We hope you're doing well! This is your friendly reminder to sign up to TA for upcoming Girl Develop It Chicago courses.
-</p>
+</div>
 
-<p>
-  Additional course information is below, and can also be found on your private sign up page.
-</p>
+<h2>Upcoming Courses</h2>
 
-<h3>Upcoming Courses</h3>
-
-<p>
+<div>
   For additional information about the course, click the course name to go to its Meetup page.
-</p>
+</div>
 
-<% @courses.each do |course| %>
-  <p>
-    <h4><%= link_to course['name'], course['url'] %></h4>
-    <%= course['date'] %> at <%= course['location'] %>
-  </p>
-<% end %>
+<div>
+  <ul>
+    <% @courses.each do |course| %>
+      <li>
+        <%= link_to course['name'], course['url'] %> on <%= course['date'] %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
-<h3>Sign Up</h3>
+<h2>Signing Up for Courses</h2>
+
+<div>
+  No need to login! Bookmark your private sign up page below, which you can visit at any time to sign up as a teaching assistant for available <%= CHAPTER_NAME %> courses. Your private sign up page also contains your upcoming TA schedule and past TAing history.
+</div>
 
 <div>
   <%= link_to("View private sign up page", "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}", class: "button") %>
