@@ -32,6 +32,9 @@
   -webkit-animation-name: fade-out;
   animation-name: fade-out;
 }
+#main {
+  margin-bottom: 50px;
+}
 
 /* BOOTSTRAP */
 html {
