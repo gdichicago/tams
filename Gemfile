@@ -15,8 +15,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rb-readline', '~> 0.5.3'
 gem 'sendgrid-ruby'
-gem 'nokogiri'
-gem 'premailer-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
