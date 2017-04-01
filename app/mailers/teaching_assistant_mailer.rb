@@ -10,7 +10,7 @@ class TeachingAssistantMailer < ActionMailer::Base
 
   def pending(ta)
     @ta = ta
-    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: TA Application received")
+    mail(to: @ta['email'], subject: "#{CHAPTER_NAME}: TA application received")
   end
 
   def monthly(ta, courses, month)
