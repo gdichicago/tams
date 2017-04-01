@@ -16,15 +16,9 @@
   No need to login! Bookmark your private sign up page below, which you can visit at any time to sign up as a teaching assistant for available <%= CHAPTER_NAME %> courses. Your private sign up page also contains your upcoming TA schedule and past TAing history.
 </div>
 
-<div>
+<div class="content-center">
   <div class="content-center">
     <%= link_to("View private sign up page", "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}", class: "button") %>
-  </div>
-</div>
-
-<div>
-  <div class="small content-center">
-    Or copy this link into your browser: <%= "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}" %>
   </div>
 </div>
 
