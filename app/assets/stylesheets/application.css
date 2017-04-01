@@ -35,6 +35,13 @@
 #main {
   margin-bottom: 50px;
 }
+#email-container {
+  color: #2a4758;
+  width: 85%;
+}
+#email-container a {
+  color: #f95a61;
+}
 
 /* BOOTSTRAP */
 html {
