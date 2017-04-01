@@ -1,25 +1,27 @@
 <h1>Hello, <%= @ta['name'] %>!</h1>
 
-<p>
+<hr />
+
+<div>
   Thanks for signing up to volunteer as a TA with Girl Develop It Chicago! Your application has been received and will be reviewed by your chapter leaders.
-</p>
+</div>
 
-<p>
+<div>
   Once your application is processed, you will receive a confirmation email with instructions on signing up to volunteer for classes.
-</p>
+</div>
 
-<p>
+<div>
   -- <br />
   Cheers, <br />
   <%= CHAPTER_NAME %>
-</p>
+</div>
 
-<p>
+<div>
   <%= image_tag attachments['logo.png'].url, alt: 'Girl Develop It', size: '100x100' %>
-</p>
+</div>
 
 <div id="footer">
-  <p class="small">
+  <div class="small">
     <em>This email was sent because you signed up with <a href="http://<%= BASE_URL %>"><%= CHAPTER_NAME %></a> as a volunteer TA.</em>
-  </p>
+  </div>
 </div>
