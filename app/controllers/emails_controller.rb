@@ -1,6 +1,4 @@
 class EmailsController < ApplicationController
-  include EmailsHelper
-
   before_action :set_resources
 
   def welcome
