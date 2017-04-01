@@ -1,4 +1,5 @@
 class TeachingAssistantMailer < ActionMailer::Base
+  add_template_helper(EmailsHelper)
 
   default from: %Q["#{FROM_EMAIL_NAME}" <#{FROM_EMAIL}>]
   layout 'mailer'
