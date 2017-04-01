@@ -10,19 +10,21 @@
   Please note that all students, volunteers, and staff are required to abide by the <a href="http://girldevelopit.com/codeofconduct">Girl Develop It Code of Conduct</a>. Report any violations or issues to your chapter leaders.
 </p>
 
-<h2>Signing Up</h2>
+<h2>Signing Up for Courses</h2>
 
 <p>
   No need to login! Bookmark your private sign up page below, which you can visit at any time to sign up as a teaching assistant for available <%= CHAPTER_NAME %> courses. Your private sign up page also contains your upcoming TA schedule and past TAing history.
 </p>
 
-<p>
-  <%= link_to("View private sign up page", "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}", class: "button") %>
-</p>
+<div class="content-center">
+  <p>
+    <%= link_to("View private sign up page", "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}", class: "button") %>
+  </p>
 
-<p class="small">
-  Or copy this link into your browser: <%= "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}" %>
-</p>
+  <p class="small">
+    Or copy this link into your browser: <%= "http://#{BASE_URL}/teaching_assistants/#{@ta['private_id']}" %>
+  </p>
+</div>
 
 <p>
   We will send an automated email to you when we post new courses on TAMS, which will be about once a month. Once you've signed up as a TA for a course, we will email you directly on week prior with the course curriculum and day-of details. No other emails, we promise.
