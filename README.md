@@ -9,4 +9,4 @@ When a new class is available on Meetup, a TAMS admin will add the course (via t
 About once a month, a TAMS admin can use the "monthly course emails" feature on the homepage to send an email to all active TAs.
 
 ## How To Deploy
-Merging into the `stable` automatically deploys your changes to Heroku.
+Merging into the `master` automatically deploys your changes to Heroku.
