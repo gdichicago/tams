@@ -3,7 +3,7 @@
 <% if @ta.banned? %>
   <h5>You are not eligible to TA for <%= CHAPTER_NAME %> at this time.</h5>
 <% else %>
-  <h3>You're signed up to TA for <span class="text-primary"><%= @ta.schedule.length %> upcoming classes</span>. We need TAs for <span class="text-primary"><%= pluralize(@num_available, 'class') %></span>.</h3>
+  <h3>You're signed up to TA for <span class="text-primary"><%= @ta.schedule.length %> upcoming classes</span>. We need TAs for <span class="text-primary"><%= pluralize(@courses.count, 'class') %></span>.</h3>
 
   <em>This is your secret sign up page. Only you (and the GDI Organizers) have access to this URL. You can sign up to TA new classes below, or change your RSVP for classes you already signed up to TA.</em>
 

@@ -12,7 +12,6 @@ class TeachingAssistantsController < ApplicationController
     @courses = courses.delete_if do |course|
       course.teaching_assistants.pluck(:private_id).include?(@ta.private_id)
     end
-    @num_available = Course.upcoming.count
   end
 
   def new
