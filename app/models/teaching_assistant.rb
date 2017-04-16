@@ -41,11 +41,6 @@ class TeachingAssistant < ApplicationRecord
   end
 
   # BALANCES
-  def pending_balance
-    return 0 unless approved?
-    hours.to_a.map(&:num).inject(&:+) || 0
-  end
-
   def balance
     return 0 unless approved?
     history.to_a.map(&:num).inject(&:+) || 0
@@ -57,32 +52,12 @@ class TeachingAssistant < ApplicationRecord
     hours.select { |h| h.course.date < Date.tomorrow }.sort_by { |h| h.course.date }
   end
 
-  def num_classes
-    hours.where('num >= 0').select { |h| h.course.date < Date.tomorrow }.length
-  end
-
   def schedule
     hours.where('num >= 0').select { |h| h.course.date > Date.yesterday }.map(&:course).sort_by(&:date)
   end
 
-  def signed_up_for(course)
-    if is_ta_for?(course)
-      "TA"
-    elsif is_student_in?(course)
-      "Student"
-    end
-  end
-
   def is_ta_for?(course)
     hours.credit.where(course: course).present?
-  end
-
-  def is_student_in?(course)
-    hours.debit.where(course: course).present?
-  end
-
-  def missing_email_for?(course)
-    !hours.where(course: course, teaching_assistant: self).first.email_sent
   end
 
   private

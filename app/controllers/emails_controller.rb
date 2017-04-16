@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+  include EmailsHelper
   before_action :set_resources
 
   def welcome
@@ -17,15 +18,5 @@ class EmailsController < ApplicationController
       TeachingAssistantMailer.monthly(ta, courses, month).deliver
     end
     redirect_to admins_dashboard_path, notice: 'Monthly emails delivered. Hooray!'
-  end
-
-  def forgot
-    @ta = TeachingAssistant.find_by_email(params[:email])
-    if @ta
-      TeachingAssistantMailer.forgot(@ta).deliver
-      render json: "Email sent!"
-    else
-      render json: "Looks like we don't have that email on file."
-    end
   end
 end
