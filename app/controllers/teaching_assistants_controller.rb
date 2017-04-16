@@ -4,13 +4,13 @@ class TeachingAssistantsController < ApplicationController
 
   def index
     render 'shared/admin_only' unless is_admin?
-    @teaching_assistants = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
+    @tas = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
   end
 
   def show
     courses = Course.upcoming.sort_by(&:date)
     @courses = courses.delete_if do |course|
-      course.teaching_assistants.pluck(:private_id).include?(@teaching_assistant.private_id)
+      course.teaching_assistants.pluck(:private_id).include?(@ta.private_id)
     end
     @num_available = Course.upcoming.count
     @inactive = Status.find_by_label("inactive")
@@ -18,22 +18,22 @@ class TeachingAssistantsController < ApplicationController
   end
 
   def new
-    @teaching_assistant = TeachingAssistant.new
+    @ta = TeachingAssistant.new
   end
 
   def create
-    @teaching_assistant = TeachingAssistant.new(teaching_assistant_params)
-    @teaching_assistant.status = Status.find_by_label("prospective")
+    @ta = TeachingAssistant.new(teaching_assistant_params)
+    @ta.status = Status.find_by_label("prospective")
     screeners = {
       about: params[:about],
       how: params[:how],
       why: params[:why]
     }
 
-    TeachingAssistantMailer.pending(@teaching_assistant).deliver if @teaching_assistant.save
+    TeachingAssistantMailer.pending(@ta).deliver if @ta.save
 
-    if @teaching_assistant.save
-      AdminMailer.new_ta(@teaching_assistant, screeners).deliver
+    if @ta.save
+      AdminMailer.new_ta(@ta, screeners).deliver
       redirect_to teaching_assistant_thanks_path
     else
       render 'new'
@@ -41,11 +41,11 @@ class TeachingAssistantsController < ApplicationController
   end
 
   def update
-    @teaching_assistant = TeachingAssistant.find_by(private_id: params[:private_id])
-    if is_admin? && @teaching_assistant.update(teaching_assistant_params)
+    @ta = TeachingAssistant.find_by(private_id: params[:private_id])
+    if is_admin? && @ta.update(teaching_assistant_params)
       redirect_to teaching_assistants_path, notice: 'Teaching assistant successfully updated.'
-    elsif @teaching_assistant.update(teaching_assistant_params)
-      private_id = @teaching_assistant.private_id
+    elsif @ta.update(teaching_assistant_params)
+      private_id = @ta.private_id
       redirect_to teaching_assistant_path(private_id), notice: 'Your account has been successfully updated.'
     else
       redirect_to admins_dashboard_path
@@ -57,7 +57,7 @@ class TeachingAssistantsController < ApplicationController
 
   private
     def set_teaching_assistant
-      @teaching_assistant = TeachingAssistant.find_by_private_id(params[:private_id])
+      @ta = TeachingAssistant.find_by_private_id(params[:private_id])
     end
 
     def teaching_assistant_params

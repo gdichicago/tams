@@ -3,14 +3,14 @@ class TeachingAssistantMailer < ActionMailer::Base
   before_action :attach_gdi_logo
   layout 'mailer'
 
-  def welcome(ta)
-    @ta = ta
-    mail(to: @ta['email'], subject: "[#{CHAPTER_NAME}] Your TA application has been approved")
-  end
-
   def pending(ta)
     @ta = ta
     mail(to: @ta['email'], subject: "[#{CHAPTER_NAME}] Your TA application has been received")
+  end
+
+  def welcome(ta)
+    @ta = ta
+    mail(to: @ta['email'], subject: "[#{CHAPTER_NAME}] Your TA application has been approved")
   end
 
   def monthly(ta, courses, month)
