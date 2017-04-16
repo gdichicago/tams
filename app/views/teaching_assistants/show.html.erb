@@ -86,6 +86,6 @@
       <h4><em><%= @ta.name %> has <%= @ta.balance %> TA hours.</em></h4>
     </div>
   <% end %>
-<% end %>
 
-<%= link_to icon_cog + ' Settings', edit_teaching_assistant_path(@ta.private_id), class: 'pull-right' %>
+  <%= link_to icon_cog + ' Settings', edit_teaching_assistant_path(@ta.private_id), class: 'pull-right' %>
+<% end %>
