@@ -26,6 +26,6 @@ class TeachingAssistantMailer < ActionMailer::Base
 
   private
   def attach_gdi_logo
-    attachments['logo.png'] = File.read(Rails.root.join("app/assets/images/circle-gdi-logo.png"))
+    attachments['logo.png'] = File.read(Rails.root.join("app/assets/images/gdi-logo.png"))
   end
 end
