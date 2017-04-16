@@ -16,17 +16,25 @@
             </thead>
             <tbody>
               <% @course.teaching_assistants.each do |ta| %>
-              <tr>
-                <td>
-                  <%= link_to ta.name, teaching_assistant_path(ta.private_id) %>
-                </td>
+                <tr>
+                  <td>
+                    <%= link_to ta.name, teaching_assistant_path(ta.private_id) %>
+                  </td>
 
-                <td>
-                  <%= link_to icon_trash, { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, class: "btn btn-primary btn-xs" %>
-                </td>
-              </tr>
+                  <td>
+                    <%= link_to icon_trash, { controller: :hours, action: :destroy, id: @course.hour_for(ta) }, method: :delete, class: "btn btn-primary btn-xs" %>
+                  </td>
+                </tr>
               <% end %>
             </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td>
+                  <button id='ta-email-clip' class='btn btn-primary btn-sm pull-right' data-clipboard-text='<%= @course.ta_emails %>' title='Copy TA Emails to Clipboard'><%= icon_clipboard %></button>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         <% end %>
       </div>

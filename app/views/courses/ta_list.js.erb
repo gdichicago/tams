@@ -4,3 +4,7 @@ $('#ta-list-modal').show();
 $('#ta-list-modal .close').click(function(event) {
   $('#ta-list-modal').remove();
 });
+
+$('#ta-email-clip').click(function(event) {
+  var clip = new ZeroClipboard($('#ta-email-clip'))
+});

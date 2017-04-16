@@ -27,6 +27,10 @@ class Course < ApplicationRecord
     teaching_assistants.select { |ta| ta.is_ta_for?(self) }
   end
 
+  def ta_emails
+    teaching_assistants.map { |ta| ta.email }.join(',')
+  end
+
   def hour_for(teaching_assistant)
     hours.where(teaching_assistant: teaching_assistant).first
   end

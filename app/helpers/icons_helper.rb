@@ -38,4 +38,8 @@ module IconsHelper
   def icon_list
     raw('<i class="fa fa-list-alt"></i>')
   end
+
+  def icon_clipboard
+    raw('<i class="fa fa-clipboard"></i>')
+  end
 end
