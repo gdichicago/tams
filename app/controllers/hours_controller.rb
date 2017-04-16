@@ -1,6 +1,5 @@
 class HoursController < ApplicationController
   include HoursHelper
-
   before_action :set_hour, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -16,17 +15,18 @@ class HoursController < ApplicationController
 
   def create
     @hour = Hour.new(hour_params)
+    @hour.num = @hour.course.credit_hours
     private_id = @hour.teaching_assistant.private_id
 
-    build_hour_from(@hour)
-
-    if is_admin?
+    if is_admin? && @hour.save
       redirect_to courses_path, notice: 'TA hour(s) successfully created.'
-    elsif @hour.new_record?
-      redirect_to teaching_assistant_path(private_id), notice: 'Something went wrong.'
+    elsif @hour.save
+      notice = 'Got it! See you in class.'
     else
-      redirect_to teaching_assistant_path(private_id), notice: 'Got it! See you in class.'
+      notice = 'Oh no, something went wrong! Please try again.'
     end
+
+    redirect_to teaching_assistant_path(private_id), notice: notice
   end
 
   def edit

@@ -27,9 +27,8 @@ class TeachingAssistantsController < ApplicationController
       why: params[:why]
     }
 
-    TeachingAssistantMailer.pending(@ta).deliver if @ta.save
-
     if @ta.save
+      TeachingAssistantMailer.pending(@ta).deliver
       AdminMailer.new_ta(@ta, screeners).deliver
       redirect_to teaching_assistant_thanks_path
     else
@@ -41,12 +40,10 @@ class TeachingAssistantsController < ApplicationController
   end
 
   def update
-    @ta = TeachingAssistant.find_by_private_id(params[:private_id])
     if is_admin? && @ta.update(teaching_assistant_params)
       redirect_to teaching_assistants_path, notice: 'Teaching assistant successfully updated.'
     elsif @ta.update(teaching_assistant_params)
-      private_id = @ta.private_id
-      redirect_to edit_teaching_assistant_path(private_id), notice: 'Your account has been successfully updated.'
+      redirect_to edit_teaching_assistant_path(@ta.private_id), notice: 'Your account has been successfully updated.'
     else
       redirect_to admins_dashboard_path
     end
