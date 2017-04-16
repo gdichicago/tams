@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/courses/:id/ta_list', to: 'courses#ta_list', as: 'course_ta_list'
 
   get '/teaching_assistants/thanks', to: 'teaching_assistants#thanks', as: 'teaching_assistant_thanks'
-  resources :teaching_assistants, param: :private_id, only: [:index, :new, :create, :show, :update]
+  resources :teaching_assistants, param: :private_id, only: [:index, :new, :create, :show, :edit, :update]
 
   resources :sessions, only: [:new, :create, :destroy]
   post '/', to: 'sessions#create'
