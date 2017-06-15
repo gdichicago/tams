@@ -1,4 +1,4 @@
-module ApplicationHelper
+module EmailsHelper
   def set_resources
     @courses = Course.upcoming.sort_by(&:date)
     @tas = TeachingAssistant.elligible.sort_by(&:name)

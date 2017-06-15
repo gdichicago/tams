@@ -7,13 +7,4 @@ class Hour < ApplicationRecord
   validates :teaching_assistant, uniqueness: {scope: :course}
 
   scope :credit, -> { where("num >= ?", 0) }
-  scope :debit, -> { where("num < ?", 1) }
-
-  def is_credit?
-    num > 0
-  end
-
-  def is_debit?
-    num < 0
-  end
 end

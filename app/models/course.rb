@@ -9,22 +9,12 @@ class Course < ApplicationRecord
   scope :upcoming, -> { where("date > ?", Date.yesterday) }
   scope :past, -> { where("date < ?", Date.today) }
 
-  def self.last_month
-    where(date: 1.month.ago.beginning_of_month..Date.today)
-  end
-
   def self.future_courses
     where('date > ?', Date.today)
   end
 
-  def student_hours
-    hours = (end_time - start_time) / (60*60).to_i
-    return (hours-1) if hours >= 9
-    hours
-  end
-
-  def tas
-    teaching_assistants.select { |ta| ta.is_ta_for?(self) }
+  def ta_emails
+    teaching_assistants.map { |ta| ta.email }.join(',')
   end
 
   def hour_for(teaching_assistant)
@@ -51,14 +41,6 @@ class Course < ApplicationRecord
 
   def pretty_date_short
     date.strftime("%B %e, %Y")
-  end
-
-  def can_email?
-    !email_sent && teaching_assistants.any? && date < 10.days.from_now && date > Date.today
-  end
-
-  def missing_emails?
-    email_sent && hours.map(&:email_sent).uniq.include?(false)
   end
 
   private
