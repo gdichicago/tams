@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616161834) do
+ActiveRecord::Schema.define(version: 20170616210154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admin", force: :cascade do |t|
+  create_table "admins", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.datetime "created_at"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170616161834) do
     t.string   "email"
   end
 
-  create_table "course", force: :cascade do |t|
+  create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.date     "date"
     t.string   "url"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170616161834) do
     t.time     "end_time"
   end
 
-  create_table "hour", force: :cascade do |t|
+  create_table "hours", force: :cascade do |t|
     t.integer  "course_id"
     t.integer  "teaching_assistant_id"
     t.integer  "num"
@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 20170616161834) do
     t.datetime "updated_at"
   end
 
-  create_table "status", force: :cascade do |t|
+  create_table "statuses", force: :cascade do |t|
     t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "teaching_assistant", force: :cascade do |t|
+  create_table "teaching_assistants", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.integer  "status_id"
