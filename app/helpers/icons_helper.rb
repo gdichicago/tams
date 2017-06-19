@@ -50,4 +50,8 @@ module IconsHelper
   def icon_left_arrow
     raw('<i class="fa fa-long-arrow-left"></i>')
   end
+
+  def icon_menu
+    raw('<i class="fa fa-bars fa-2x"></i>')
+  end
 end

@@ -14,27 +14,24 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <% if is_admin? %>
-            <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'navbar-brand' %>
-          <% else %>
-            <%= link_to 'GDI Volunteering', root_path, class: 'navbar-brand' %>
-          <% end %>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <% if is_admin? %>
-            <ul class="nav navbar-nav">
-                <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
-                <li><%= link_to 'Courses', courses_path %></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete %></li>
-            </ul>
-          <% end %>
-        </div>
+    <nav>
+      <div class="nav-wrapper">
+        <% if is_admin? %>
+          <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'brand-logo' %>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
+          <ul class="right hide-on-med-and-down">
+            <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
+            <li><%= link_to 'Courses', courses_path %></li>
+            <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete, class: "waves-effect waves-light btn" %></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
+            <li><%= link_to 'Courses', courses_path %></li>
+            <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete, class: "waves-effect waves-light btn" %></li>
+          </ul>
+        <% else %>
+          <%= link_to 'GDI Volunteering', root_path, class: 'brand-logo' %>
+        <% end %>
       </div>
     </nav>
 
