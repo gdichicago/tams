@@ -9,8 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- Materialize CSS CDN and JavaScript -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
   </head>
 
   <body>
@@ -22,12 +22,12 @@
           <ul class="right hide-on-med-and-down">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete, class: "waves-effect waves-light btn" %></li>
+            <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete, class: "waves-effect waves-light btn cyan darken-4" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete, class: "waves-effect waves-light btn" %></li>
+            <li><%= link_to 'Logout', session_path(session[:current_user_id]), method: :delete, class: "waves-effect waves-light btn cyan darken-4" %></li>
           </ul>
         <% else %>
           <%= link_to 'GDI Volunteering', root_path, class: 'brand-logo' %>
@@ -35,14 +35,13 @@
       </div>
     </nav>
 
-    <div class="container" id="main">
+    <div class="container">
       <% if notice %>
         <div class="alert alert-success animated fade-out">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= notice %>
         </div>
       <% end %>
-
       <%= yield %>
     </div>
   </body>

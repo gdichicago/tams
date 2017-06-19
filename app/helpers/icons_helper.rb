@@ -15,10 +15,6 @@ module IconsHelper
     raw('<i class="fa fa-thumbs-up"></i>')
   end
 
-  def icon_rocket
-    raw('<i class="fa fa-rocket"></i>')
-  end
-
   def icon_trash
     raw('<i class="fa fa-trash"></i>')
   end
@@ -53,5 +49,9 @@ module IconsHelper
 
   def icon_menu
     raw('<i class="fa fa-bars fa-2x"></i>')
+  end
+
+  def icon_send
+    raw('<i class="fa fa-send"></i>')
   end
 end
