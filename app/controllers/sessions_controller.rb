@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
       create_session
       redirect_to admins_dashboard_path
     else
-      redirect_to new_session_path, notice: 'Login unsuccessful. Make sure your credentials are correct!'
+      redirect_to login_path, notice: 'Login unsuccessful. Make sure your credentials are correct!'
     end
   end
 
   def destroy
     destroy_session
-    redirect_to new_session_path
+    redirect_to root_path
   end
 
   private

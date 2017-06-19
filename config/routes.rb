@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
+  # ROOT
   root 'home#index'
 
-  resources :hours, only: [:new, :edit, :create, :update, :destroy]
+  # SESSIONS
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
-  resources :courses
-  get '/courses/:id/ta_list', to: 'courses#ta_list', as: 'course_ta_list'
+  # ADMIN
+  get '/dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
 
+  # TEACHING ASSISTANTS
   get '/teaching_assistants/thanks', to: 'teaching_assistants#thanks', as: 'teaching_assistant_thanks'
   resources :teaching_assistants, param: :private_id, only: [:index, :new, :create, :show, :edit, :update]
 
-  resources :sessions, only: [:new, :create, :destroy]
-  post '/', to: 'sessions#create'
+  # COURSES
+  resources :courses
+  get '/courses/:id/ta_list', to: 'courses#ta_list', as: 'course_ta_list'
 
-  # ADMIN FUNCTIONS
-  get '/dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
+  # HOURS
+  resources :hours, only: [:new, :edit, :create, :update, :destroy]
 
-  # EMAIL SENDS
+  # EMAILS
   get '/emails/welcome', to: 'emails#welcome', as: 'welcome_emails'
   get '/emails/monthly', to: 'emails#monthly', as: 'monthly_emails'
 end
