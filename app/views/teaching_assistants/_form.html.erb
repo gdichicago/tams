@@ -1,42 +1,28 @@
-<%= form_for @ta, html: { class: 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :name, 'First and last name', class: 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= f.text_field :name, class: 'form-control', required: true %>
-    </div>
+<%= form_for @ta do |f| %>
+  <div class="input-field col s12">
+    <%= f.label :name, 'First & Last Name' %>
+    <%= f.text_field :name, required: true %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :email, class: 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= f.email_field :email, class: 'form-control', required: true %>
-    </div>
+  <div class="input-field col s12">
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true %>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :about, 'Tell us a little about yourself. Keep it short and simple!', class: 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= text_area_tag :about, nil, class: 'form-control', required: true %>
-    </div>
+  <div class="input-field col s12">
+    <%= label_tag :how, 'How did you find us?' %>
+    <%= text_field_tag :how, nil, required: true %>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :how, 'How did you find us?', class: 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= text_field_tag :how, nil, class: 'form-control', required: true %>
-    </div>
+  <div class="input-field col s12">
+    <%= label_tag :about, 'Tell us a little about yourself. Keep it short and simple!' %>
+    <%= text_area_tag :about, nil, class: 'materialize-textarea', required: true %>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :why, 'Why are you looking to get involved with GDI Chicago?', class: 'col-lg-3 control-label' %>
-    <div class="col-lg-9">
-      <%= text_area_tag :why, nil, class: 'form-control', required: true %>
-    </div>
+  <div class="input-field col s12">
+    <%= label_tag :why, 'Why are you looking to get involved with GDI Chicago?' %>
+    <%= text_area_tag :why, nil, class: 'materialize-textarea', required: true %>
   </div>
 
-  <div class="form-group">
-    <div class="col-lg-10 col-lg-offset-3">
-      <%= f.submit 'submit', class: 'btn btn-primary', required: true %>
-    </div>
-  </div>
+  <%= f.submit 'submit', class: 'waves-effect waves-light btn cyan darken-4' %>
 <% end %>
