@@ -21,12 +21,10 @@ class HoursController < ApplicationController
     if is_admin? && @hour.save
       redirect_to courses_path, notice: 'TA hour(s) successfully created.'
     elsif @hour.save
-      notice = 'Got it! See you in class.'
+      redirect_to teaching_assistant_path(private_id), notice: 'Got it! See you in class.'
     else
-      notice = 'Oh no, something went wrong! Please try again.'
+      redirect_to teaching_assistant_path(private_id), notice: 'Oh no, something went wrong! Please try again.'
     end
-
-    redirect_to teaching_assistant_path(private_id), notice: notice
   end
 
   def edit
