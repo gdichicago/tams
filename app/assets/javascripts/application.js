@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require zeroclipboard
+
+$(document).ready(function() {
+  $(".button-collapse").sideNav();
+})
