@@ -4,7 +4,7 @@ class Course < ApplicationRecord
   has_many :hours, dependent: :destroy
   has_many :teaching_assistants, through: :hours
 
-  validates_presence_of :credit_hours, :num_tas_needed, :name, :date, :url, :location, :meetup_id, :start_time, :end_time, :pretty_time, :pretty_date
+  validates_presence_of :credit_hours, :num_tas_needed, :name, :date, :url, :location, :start_time, :end_time, :pretty_time, :pretty_date
 
   scope :upcoming, -> { where("date > ?", Date.yesterday) }
   scope :past, -> { where("date < ?", Date.today) }
