@@ -13,7 +13,7 @@ From the directory where you've cloned the repo, use the following commands:
 
 ```
 bundle install
-bundle exec rake db:setup
+rake db:setup
 rails s
 ```
 
@@ -23,13 +23,7 @@ Start the rails console with `rails c`
 In the console use
 
 ```
-a = Admin.create :name => "[name]", :password => "[password]", :email=> "[email address]"
-```
-
-to input information and credentials for the new admin, then
-
-```
-a.save
+a = Admin.create(name: "<username here>", password: "<password here>", email: "<email here>")
 ```
 
 to create the new user.
