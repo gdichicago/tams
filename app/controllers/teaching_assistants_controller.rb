@@ -10,7 +10,7 @@ class TeachingAssistantsController < ApplicationController
   def show
     courses = Course.upcoming.sort_by(&:date)
     @courses = courses.delete_if do |course|
-      course.teaching_assistants.pluck(:private_id).include?(@ta.private_id)
+      course.num_tas_still_needed == 0 || course.teaching_assistants.pluck(:private_id).include?(@teaching_assistant.private_id)
     end
   end
 
