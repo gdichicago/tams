@@ -1,5 +1,19 @@
 <div class="row">
-  <h3 class="cyan-text text-darken-4">Not an organizer?</h3 class="cyan-text text-darken-4">
-  <p>Sign up to be a teaching assistant!</p>
-  <%= link_to 'TA signup', new_teaching_assistant_path, class: 'waves-effect waves-light btn cyan darken-4' %>
+  <div class="col l8 offset-l2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <%= image_tag('stock-computer.jpg') %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Become a Teaching Assistant<i class="fa fa-ellipsis-v right"></i></span>
+        <%= link_to 'Signup', new_teaching_assistant_path, class: 'waves-effect waves-light btn cyan darken-4' %>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Become a Teaching Assistant<i class="fa fa-close right"></i></span>
+        <p>Girl Develop It teaching assistants are awesome people who love sharing their knowledge with others and helping people one-on-one. You're not afraid of difficult questions, saying "I don't know", or Googling it. You don't have to be an expert, just an enthusiastic person with experience in the field.</p>
+        <br />
+        <p><em>Image Source: <a href="http://www.wocintechchat.com/" class="red-text text-lighten-2">WOCinTech Chat</a></em></p>
+      </div>
+    </div>
+  </div>
 </div>
