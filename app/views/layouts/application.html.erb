@@ -16,7 +16,7 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <% if is_admin? %>
+        <% if is_logged_in? %>
           <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'brand-logo' %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
           <ul class="right hide-on-med-and-down">
@@ -31,10 +31,17 @@
           </ul>
         <% else %>
           <%= link_to 'GDI Volunteering', root_path, class: 'brand-logo' %>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
+          <ul class="right hide-on-med-and-down">
+            <li><%= link_to 'Login', new_session_path, class: "waves-effect waves-light btn cyan darken-4" %></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><%= link_to 'Login', new_session_path, class: "waves-effect waves-light btn cyan darken-4" %></li>
+          </ul>
         <% end %>
       </div>
     </nav>
-
+    <br />
     <div class="container">
       <% if notice %>
         <div class="alert alert-success animated fade-out">

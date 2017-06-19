@@ -3,7 +3,7 @@ class TeachingAssistantsController < ApplicationController
   before_action :set_status, only: [:index, :edit]
 
   def index
-    render 'shared/admin_only' unless is_admin?
+    render 'shared/admin_only' unless is_logged_in?
     @tas = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
   end
 
@@ -40,7 +40,7 @@ class TeachingAssistantsController < ApplicationController
   end
 
   def update
-    if is_admin? && @ta.update(teaching_assistant_params)
+    if is_logged_in? && @ta.update(teaching_assistant_params)
       redirect_to teaching_assistants_path, notice: 'Teaching assistant successfully updated.'
     elsif @ta.update(teaching_assistant_params)
       redirect_to edit_teaching_assistant_path(@ta.private_id), notice: 'Your account has been successfully updated.'

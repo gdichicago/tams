@@ -1,14 +1,13 @@
 class CoursesController < ApplicationController
+  before_action :admin_only, only: [:index, :new, :edit]
   before_action :set_course, only: [:ta_list, :show, :edit, :update, :destroy]
 
   def index
-    render 'shared/admin_only' unless is_admin?
     @upcoming = Course.upcoming.sort_by(&:date).reverse
     @past = Course.past.sort_by(&:date).reverse
   end
 
   def new
-    render 'shared/admin_only' unless is_admin?
     @course = Course.new
   end
 
@@ -27,7 +26,6 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    render 'shared/admin_only' unless is_admin?
   end
 
   def update
@@ -56,6 +54,10 @@ class CoursesController < ApplicationController
   end
 
   private
+    def admin_only
+      render 'shared/admin_only' unless is_logged_in?
+    end
+
     def set_course
       @course = Course.find(params[:id])
     end

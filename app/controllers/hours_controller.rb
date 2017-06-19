@@ -3,7 +3,7 @@ class HoursController < ApplicationController
   before_action :set_hour, only: [:show, :edit, :update, :destroy]
 
   def new
-    render 'shared/admin_only' unless is_admin?
+    render 'shared/admin_only' unless is_logged_in?
     @hour = Hour.new
     @courses = Course.future_courses.sort_by(&:date).collect { |c| ["#{c.pretty_date} - #{c.name}", c.id] }
     @tas = TeachingAssistant.elligible.sort_by(&:name).collect { |ta| [ta.name, ta.id] }
@@ -18,7 +18,7 @@ class HoursController < ApplicationController
     @hour.num = @hour.course.credit_hours
     private_id = @hour.teaching_assistant.private_id
 
-    if is_admin? && @hour.save
+    if is_logged_in? && @hour.save
       redirect_to courses_path, notice: 'TA hour(s) successfully created.'
     elsif @hour.save
       redirect_to teaching_assistant_path(private_id), notice: 'Got it! See you in class.'
@@ -31,7 +31,7 @@ class HoursController < ApplicationController
   end
 
   def update
-    if is_admin? && @hour.update(hour_params)
+    if is_logged_in? && @hour.update(hour_params)
       redirect_to courses_path, notice: 'TA hour(s) successfully updated.'
     elsif @hour.update(hour_params)
       private_id = @hour.teaching_assistant.private_id
@@ -44,7 +44,7 @@ class HoursController < ApplicationController
   def destroy
     @hour.destroy
 
-    if is_admin?
+    if is_logged_in?
       redirect_to courses_path, notice: 'TA hour(s) successfully removed.'
     else
       private_id = @hour.teaching_assistant.private_id

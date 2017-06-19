@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'home#index'
 
   resources :hours, only: [:new, :edit, :create, :update, :destroy]
 

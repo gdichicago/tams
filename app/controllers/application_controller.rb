@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include AdminsHelper
+  include SessionsHelper
   include IconsHelper
 
   # Prevent CSRF attacks by raising an exception.
