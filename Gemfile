@@ -19,6 +19,7 @@ gem 'zeroclipboard-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'pry-rails', '~> 0.3.6'
 end
 
 group :development do
