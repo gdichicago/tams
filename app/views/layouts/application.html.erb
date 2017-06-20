@@ -3,10 +3,8 @@
   <head>
     <title>GDI Chicago TAMS</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application" %>
     <%= javascript_include_tag 'https://use.fontawesome.com/9e05654630.js' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- Materialize CSS CDN and JavaScript -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
@@ -22,21 +20,21 @@
           <ul class="right hide-on-med-and-down">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal lighten-2" %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal lighten-2 flow-text" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal" %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal flow-text" %></li>
           </ul>
         <% else %>
           <%= link_to 'GDI Volunteering', root_path, class: 'brand-logo' %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
           <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal lighten-2" %></li>
+            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal lighten-2 flow-text" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal" %></li>
+            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal flow-text" %></li>
           </ul>
         <% end %>
       </div>

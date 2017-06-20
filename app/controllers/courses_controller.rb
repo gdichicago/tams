@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:ta_list, :show, :edit, :update, :destroy]
 
   def index
-    @upcoming = Course.upcoming.sort_by(&:date).reverse
+    @upcoming = Course.upcoming.sort_by(&:date)
     @past = Course.past.sort_by(&:date).reverse
   end
 
@@ -44,13 +44,6 @@ class CoursesController < ApplicationController
     end
 
     redirect_to courses_path, notice: notice
-  end
-
-  def ta_list
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   private
