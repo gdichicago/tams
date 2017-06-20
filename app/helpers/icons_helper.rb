@@ -1,8 +1,4 @@
 module IconsHelper
-  def icon_ban
-    raw('<i class="fa fa-ban"></i>')
-  end
-
   def icon_edit
     raw('<i class="fa fa-pencil"></i>')
   end

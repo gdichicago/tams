@@ -15,28 +15,28 @@
 
   <body>
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper teal lighten-1">
         <% if is_logged_in? %>
           <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'brand-logo' %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
           <ul class="right hide-on-med-and-down">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn cyan darken-4" %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal lighten-2" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn cyan darken-4" %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal lighten-2" %></li>
           </ul>
         <% else %>
           <%= link_to 'GDI Volunteering', root_path, class: 'brand-logo' %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
           <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn cyan darken-4" %></li>
+            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal lighten-2" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn cyan darken-4" %></li>
+            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal lighten-2" %></li>
           </ul>
         <% end %>
       </div>
