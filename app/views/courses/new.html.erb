@@ -1,34 +1,22 @@
-<div class="col-lg-10 col-lg-offset-1">
-  <h2>New Course</h2>
+<div class="row">
+  <h3 class="red-text text-lighten-2">New Course</h3>
 
-  <strong>Note:</strong> You will need to manually enter the following information:
-  <ul>
-    <li>
-      Number of credit hours received
-    </li>
-    <li>
-      Number of teaching assistants needed
-    </li>
-  </ul>
+  <div class="row">
+    <h5>Import from Meetup</h5>
 
-  <div class="form-horizontal">
-    <h3>Import from Meetup</h3>
-
-    <div class="form-group">
+    <div class="input-field col s12">
       <%= label_tag :url, 'Meetup URL', class: 'col-lg-3 control-label' %>
-      <div class="col-lg-9">
-        <%= text_field_tag :url, '', id: 'fetch_meetup_url', class: 'form-control' %>
-      </div>
+      <%= text_field_tag :url, '', id: 'fetch_meetup_url', class: 'form-control' %>
     </div>
 
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-3">
-        <%= submit_tag 'fetch', id: 'fetch_meetup_button', class: 'btn btn-primary' %>
-      </div>
+    <div class="col s12">
+      <%= submit_tag 'fetch', id: 'fetch_meetup_button', class: 'waves-effect waves-light btn teal lighten-2 flow-text' %>
     </div>
   </div>
 
-  <h3>Imported Meetup</h3>
+  <div class="row">
+    <h5>Imported Meetup</h5>
 
-  <%= render 'form' %>
+    <%= render 'form' %>
+  </div>
 </div>
