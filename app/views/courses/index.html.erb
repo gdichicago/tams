@@ -1,6 +1,7 @@
 <div class="row">
-  <%= link_to icon_plus, new_course_path, class: 'waves-effect waves-light btn teal' %>
-  <%= link_to 'add TA to upcoming course', new_hour_path, remote: true, class: 'waves-effect waves-light btn teal flow-text' %>
+  <div class="fixed-action-btn">
+    <%= link_to icon_plus, new_course_path, class: 'btn-floating btn-large waves-effect waves-light teal' %>
+  </div>
 
   <h3 class="red-text text-lighten-2">Upcoming Courses</h3>
 
@@ -13,7 +14,7 @@
         <th>Options</th>
       </tr>
     </thead>
-    <tbody> 
+    <tbody>
       <% @upcoming.each do |course| %>
         <tr>
           <%= render partial: 'table_view', locals: { course: course } %>

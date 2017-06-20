@@ -2,17 +2,6 @@ class HoursController < ApplicationController
   include HoursHelper
   before_action :set_hour, only: [:show, :edit, :update, :destroy]
 
-  def new
-    render 'shared/admin_only' unless is_logged_in?
-    @hour = Hour.new
-    @courses = Course.future_courses.sort_by(&:date).collect { |c| ["#{c.pretty_date} - #{c.name}", c.id] }
-    @tas = TeachingAssistant.elligible.sort_by(&:name).collect { |ta| [ta.name, ta.id] }
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
   def create
     @hour = Hour.new(hour_params)
     @hour.num = @hour.course.credit_hours

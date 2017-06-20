@@ -9,10 +9,6 @@ class Course < ApplicationRecord
   scope :upcoming, -> { where("date > ?", Date.yesterday) }
   scope :past, -> { where("date < ?", Date.today) }
 
-  def self.future_courses
-    where('date > ?', Date.today)
-  end
-
   def ta_emails
     teaching_assistants.map { |ta| ta.email }.join(',')
   end

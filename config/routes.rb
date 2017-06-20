@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/courses/:id/ta_list', to: 'courses#ta_list', as: 'course_ta_list'
 
   # HOURS
-  resources :hours, only: [:new, :edit, :create, :update, :destroy]
+  resources :hours, only: [:edit, :create, :update, :destroy]
 
   # EMAILS
   get '/emails/welcome', to: 'emails#welcome', as: 'welcome_emails'
