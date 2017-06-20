@@ -42,7 +42,6 @@ class TeachingAssistant < ApplicationRecord
 
   # BALANCES
   def balance
-    return 0 unless approved?
     history.to_a.map(&:num).inject(&:+) || 0
   end
 

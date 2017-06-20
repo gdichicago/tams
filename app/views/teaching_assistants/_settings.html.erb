@@ -13,7 +13,7 @@
   </div>
 
   <div class="col s12">
-    <%= f.submit 'submit', class: 'waves-effect waves-light btn teal lighten-2' %>
+    <%= f.submit 'submit', class: 'waves-effect waves-light btn teal' %>
     <%= f.button 'cancel', type: :reset, class: 'waves-effect waves-light btn grey' %>
   </div>
   <% end %>
@@ -22,8 +22,8 @@
 <div class="row">
   <% if ta.inactive? %>
   <h5>Reactivate My Account</h5>
-  Maybe we're being presumptuous, but welcome back!
-  <%= button_to 'reactivate', { controller: :teaching_assistants, action: :update, id: ta, teaching_assistant: { status_id: Status.pending.id } }, method: :put, class: 'waves-effect waves-light btn teal lighten-2' %>
+  <p>Maybe we're being presumptuous, but welcome back!</p>
+  <%= button_to 'reactivate', { controller: :teaching_assistants, action: :update, id: ta, teaching_assistant: { status_id: Status.pending.id } }, method: :put, class: 'waves-effect waves-light btn teal' %>
   <% else %>
   <h5>Deactivate My Account</h5>
   <p>This will mark you as inactive in our system. Your history and contact details will still exist in our TA database, but you will no longer receive emails. You can reactivate your account at any time by visiting this page.</p>
