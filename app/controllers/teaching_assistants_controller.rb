@@ -1,5 +1,5 @@
 class TeachingAssistantsController < ApplicationController
-  before_action :set_teaching_assistant, only: [:show, :update, :edit, :destroy]
+  before_action :set_teaching_assistant, only: [:show, :update]
 
   def index
     render 'shared/admin_only' unless is_logged_in?

@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <% ta.history.each do |hour| %>
+      <% ta.history.reverse.each do |hour| %>
         <tr>
           <%= render partial: 'courses/ta_view', locals: { course: hour.course, teaching_assistant: ta } %>
         </tr>
