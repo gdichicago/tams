@@ -19,10 +19,6 @@ module IconsHelper
     raw('<i class="fa fa-meetup"></i>')
   end
 
-  def icon_email
-    raw('<i class="fa fa-envelope"></i>')
-  end
-
   def icon_plus
     raw('<i class="fa fa-plus"></i>')
   end
@@ -49,5 +45,17 @@ module IconsHelper
 
   def icon_send
     raw('<i class="fa fa-send"></i>')
+  end
+
+  def icon_clock
+    raw('<i class="fa fa-clock-o"></i>')
+  end
+
+  def icon_terminal
+    raw('<i class="fa fa-terminal"></i>')
+  end
+
+  def icon_calendar
+    raw('<i class="fa fa-calendar"></i>')
   end
 end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # TEACHING ASSISTANTS
   get '/teaching_assistants/thanks', to: 'teaching_assistants#thanks', as: 'teaching_assistant_thanks'
-  resources :teaching_assistants, param: :private_id, only: [:index, :new, :create, :show, :edit, :update]
+  resources :teaching_assistants, param: :private_id, only: [:index, :new, :create, :show, :update]
 
   # COURSES
   resources :courses

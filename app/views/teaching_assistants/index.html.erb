@@ -14,6 +14,7 @@
             <p class="truncate"><%= ta.email %></p>
           </div>
           <div class="card-action">
+            <span class="badge" data-badge-caption="<%= ta.balance %> hours"></span>
             <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: ta.private_id, teaching_assistant: { status_id: ta.status.upgrade } }, method: :put, class: 'btn-floating btn waves-effect waves-light teal lighten-2' %>
             <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: ta.private_id, teaching_assistant: { status_id: ta.status.downgrade } }, method: :put, class: 'btn-floating btn waves-effect waves-light red lighten-2' %>
           </div>

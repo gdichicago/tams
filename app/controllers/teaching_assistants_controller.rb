@@ -1,10 +1,10 @@
 class TeachingAssistantsController < ApplicationController
-  before_action :set_teaching_assistant, only: [:edit, :show, :update, :edit, :destroy]
-  before_action :set_status, only: [:index, :edit]
+  before_action :set_teaching_assistant, only: [:show, :update, :edit, :destroy]
+  before_action :set_status, only: [:show]
 
   def index
     render 'shared/admin_only' unless is_logged_in?
-    @tas = TeachingAssistant.all.includes(:status, :hours).sort_by(&:name)
+    @tas = TeachingAssistant.all.sort_by(&:name)
   end
 
   def show
@@ -34,9 +34,6 @@ class TeachingAssistantsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def edit
   end
 
   def update
