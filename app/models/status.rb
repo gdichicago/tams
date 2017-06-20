@@ -7,6 +7,14 @@ class Status < ApplicationRecord
     where(label: %w(banned inactive prospective))
   end
 
+  def self.pending
+    find_by_label('pending')
+  end
+
+  def self.inactive
+    find_by_label('inactive')
+  end
+
   def color
     case self.label
     when 'prospective', 'pending'

@@ -1,0 +1,20 @@
+<% if courses.any? %>
+  <table class="table highlight centered">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Date</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% courses.each do |course| %>
+        <tr>
+          <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: ta } %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  There aren't any upcoming courses to sign up for right now (or you've signed up for them all). Check back later!
+<% end %>

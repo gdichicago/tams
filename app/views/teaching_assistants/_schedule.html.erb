@@ -1,0 +1,20 @@
+<% if ta.schedule.any? %>
+  <table class="table highlight centered">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Date</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% ta.schedule.each do |course| %>
+        <tr>
+          <%= render partial: 'courses/ta_view', locals: { course: course, teaching_assistant: ta } %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  Looks like you're not signed up for anything right now!
+<% end %>

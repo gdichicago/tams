@@ -1,6 +1,5 @@
 class TeachingAssistantsController < ApplicationController
   before_action :set_teaching_assistant, only: [:show, :update, :edit, :destroy]
-  before_action :set_status, only: [:show]
 
   def index
     render 'shared/admin_only' unless is_logged_in?
@@ -56,12 +55,5 @@ class TeachingAssistantsController < ApplicationController
 
   def teaching_assistant_params
     params.require(:teaching_assistant).permit(:name, :email, :status_id)
-  end
-
-  def set_status
-    @approved = Status.find_by_label("approved")
-    @banned = Status.find_by_label("banned")
-    @pending = Status.find_by_label("pending")
-    @inactive = Status.find_by_label("inactive")
   end
 end

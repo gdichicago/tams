@@ -1,0 +1,32 @@
+<div class="row">
+  <h5>Personal Information</h5>
+
+  <%= form_for ta, url: teaching_assistant_path(ta.private_id) do |f| %>
+  <div class="input-field col s12 m6">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div class="input-field col s12 m6">
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true %>
+  </div>
+
+  <div class="col s12">
+    <%= f.submit 'submit', class: 'waves-effect waves-light btn teal lighten-2' %>
+    <%= f.button 'cancel', type: :reset, class: 'waves-effect waves-light btn grey' %>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <% if ta.inactive? %>
+  <h5>Reactivate My Account</h5>
+  Maybe we're being presumptuous, but welcome back!
+  <%= button_to 'reactivate', { controller: :teaching_assistants, action: :update, id: ta, teaching_assistant: { status_id: Status.pending.id } }, method: :put, class: 'waves-effect waves-light btn teal lighten-2' %>
+  <% else %>
+  <h5>Deactivate My Account</h5>
+  <p>This will mark you as inactive in our system. Your history and contact details will still exist in our TA database, but you will no longer receive emails. You can reactivate your account at any time by visiting this page.</p>
+  <%= button_to 'deactivate', { controller: :teaching_assistants, action: :update, private_id: ta.private_id, teaching_assistant: { status_id: Status.inactive.id } }, method: :put, class: 'waves-effect waves-light btn red lighten-2' %>
+  <% end %>
+</div>
