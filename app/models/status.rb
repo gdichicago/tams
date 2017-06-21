@@ -18,9 +18,9 @@ class Status < ApplicationRecord
   def color
     case self.label
     when 'prospective', 'pending'
-      'amber lighten-1'
+      'amber lighten-3'
     when 'approved'
-      'teal lighten-2'
+      'teal lighten-3'
     else
       'red lighten-2'
     end

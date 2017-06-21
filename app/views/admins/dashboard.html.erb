@@ -1,5 +1,5 @@
-<div class="row">
-  <h3 class="red-text text-lighten-2">Prospective TAs</h3>
+<div class="section">
+  <h2 class="light">Prospective TAs</h2>
 
   <% if @prospective_tas.any? %>
     <p>Approving an application will send them an email and set the TA's status to pending.</p>
@@ -14,7 +14,7 @@
         <% @prospective_tas.each do |ta| %>
           <tr>
             <td><%= ta.name %></td>
-            <td><%= link_to(icon_send, { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }, class: 'teal-text text-lighten-2') %></td>
+            <td><%= link_to(icon_send, { controller: :emails, action: :welcome, emails: { teaching_assistant: ta } }, class: 'red-text text-lighten-2') %></td>
           </tr>
         <% end %>
       </tbody>
@@ -24,10 +24,10 @@
   <% end %>
 </div>
 
-<div class="row">
-  <h3 class="red-text text-lighten-2">Monthly Course Emails</h3>
+<div class="section">
+  <h2 class="light">Monthly Course Emails</h2>
   <p>
     This will email all teaching assistants! Use with caution...<br /><br />
-    <%= link_to('send email', { controller: :emails, action: :monthly }, method: :get, class: 'waves-effect waves-light btn teal flow-text') %>
+    <%= link_to('send email', { controller: :emails, action: :monthly }, method: :get, class: 'waves-effect waves-light btn red lighten-2 flow-text') %>
   </p>
 </div>

@@ -15,26 +15,26 @@
     <nav>
       <div class="nav-wrapper cyan darken-4">
         <% if is_logged_in? %>
-          <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'brand-logo light' %>
+          <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'brand-logo center light' %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
           <ul class="right hide-on-med-and-down">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn amber accent-1 flow-text black-text" %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal lighten-3 flow-text black-text" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><%= link_to 'Teaching Assistants', teaching_assistants_path %></li>
             <li><%= link_to 'Courses', courses_path %></li>
-            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn teal flow-text" %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete, class: "waves-effect waves-light btn cyan darken-4 flow-text" %></li>
           </ul>
         <% else %>
-          <%= link_to 'GDI Volunteering', root_path, class: 'brand-logo' %>
+          <%= link_to 'GDI Volunteering', admins_dashboard_path, class: 'brand-logo center light' %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><%= icon_menu %></a>
           <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal lighten-2 flow-text" %></li>
+            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal lighten-3 flow-text black-text" %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn teal flow-text" %></li>
+            <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn cyan darken-4 flow-text" %></li>
           </ul>
         <% end %>
       </div>

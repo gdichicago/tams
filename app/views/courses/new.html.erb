@@ -1,22 +1,18 @@
 <div class="row">
-  <h3 class="red-text text-lighten-2">New Course</h3>
+  <h2 class="light">New Course</h2>
 
-  <div class="row">
-    <h5>Import from Meetup</h5>
+  <h5 class="light">Import from Meetup</h5>
 
-    <div class="input-field col s12">
-      <%= label_tag :url, 'Meetup URL', class: 'col-lg-3 control-label' %>
-      <%= text_field_tag :url, '', id: 'fetch_meetup_url', class: 'form-control' %>
-    </div>
-
-    <div class="col s12">
-      <%= submit_tag 'fetch', id: 'fetch_meetup_button', class: 'waves-effect waves-light btn teal lighten-2 flow-text' %>
-    </div>
+  <div class="input-field col s12">
+    <%= label_tag :url, 'Meetup URL', class: 'col-lg-3 control-label' %>
+    <%= text_field_tag :url, '', id: 'fetch_meetup_url', class: 'form-control' %>
   </div>
 
-  <div class="row">
-    <h5>Imported Meetup</h5>
-
-    <%= render 'form' %>
+  <div class="col s12">
+    <%= submit_tag 'fetch', id: 'fetch_meetup_button', class: 'waves-effect waves-light btn cyan darken-4 flow-text' %>
   </div>
+
+  <h5 class="light">Imported Meetup</h5>
+
+  <%= render 'form' %>
 </div>

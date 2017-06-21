@@ -1,5 +1,5 @@
 <div class="modal-content">
-  <h4>TAs for <%= course.name %></h4>
+  <h5 class="light">TAs for <%= course.name %></h5>
   <% if !course.teaching_assistants.any? %>
     No TAs have signed up yet!
   <% else %>
@@ -16,7 +16,7 @@
             </td>
 
             <td>
-              <%= link_to icon_trash, { controller: :hours, action: :destroy, id: course.hour_for(ta) }, method: :delete, class: 'waves-effect waves-light btn teal' %>
+              <%= link_to icon_trash, { controller: :hours, action: :destroy, id: course.hour_for(ta) }, method: :delete, class: 'waves-effect waves-light btn cyan darken-4' %>
             </td>
           </tr>
         <% end %>
@@ -25,5 +25,5 @@
   <% end %>
 </div>
 <div class="modal-footer">
-  <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat">Close</a>
+  <a href="#!" class="modal-action modal-close waves-effect btn-flat">Close</a>
 </div>

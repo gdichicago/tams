@@ -1,5 +1,5 @@
 <div class="row">
-  <h3 class="red-text text-lighten-2">Teaching Assistants</h3>
+  <h2 class="light">Teaching Assistants</h2>
 
   <p>To view hour balances and history, view the individual TA.</p>
 
@@ -8,14 +8,14 @@
         <div class="card grey lighten-5 z-depth-1">
           <div class="card-content">
             <span class="card-title">
-              <span class="new badge <%= ta.status.color %>" data-badge-caption="<%= ta.status.label %>"></span>
-              <p class="truncate"><%= link_to ta.name, teaching_assistant_path(ta.private_id), class: 'teal-text text-lighten-2' %></p>
+              <span class="new badge <%= ta.status.color %> black-text" data-badge-caption="<%= ta.status.label %>"></span>
+              <p class="truncate"><%= link_to ta.name, teaching_assistant_path(ta.private_id), class: 'red-text text-lighten-2' %></p>
             </span>
             <p class="truncate"><%= ta.email %></p>
           </div>
           <div class="card-action">
             <span class="badge" data-badge-caption="<%= ta.balance %> hours"></span>
-            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: ta.private_id, teaching_assistant: { status_id: ta.status.upgrade } }, method: :put, class: 'btn-floating btn waves-effect waves-light teal lighten-2' %>
+            <%= link_to icon_thumbs_up, { controller: :teaching_assistants, action: :update, private_id: ta.private_id, teaching_assistant: { status_id: ta.status.upgrade } }, method: :put, class: 'btn-floating btn waves-effect waves-light teal lighten-3' %>
             <%= link_to icon_thumbs_down, { controller: :teaching_assistants, action: :update, private_id: ta.private_id, teaching_assistant: { status_id: ta.status.downgrade } }, method: :put, class: 'btn-floating btn waves-effect waves-light red lighten-2' %>
           </div>
         </div>

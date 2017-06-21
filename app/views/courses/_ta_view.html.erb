@@ -11,7 +11,7 @@
     <% if teaching_assistant.is_ta_for?(course) %>
       <%= button_to 'Change RSVP to No', { controller: :hours, action: :destroy, id: course.hour_for(teaching_assistant) }, method: :delete, class: 'waves-effect waves-light btn red lighten-2 flow-text' %>
     <% else %>
-      <%= button_to "RSVP Yes! I'll be there!", { controller: :hours, action: :create, hour: { course_id: course.id, teaching_assistant_id: teaching_assistant.id } }, method: :post, class: 'waves-effect waves-light btn teal flow-text' %>
+      <%= button_to "RSVP Yes! I'll be there!", { controller: :hours, action: :create, hour: { course_id: course.id, teaching_assistant_id: teaching_assistant.id } }, method: :post, class: 'waves-effect waves-light btn cyan darken-4 flow-text' %>
     <% end %>
   </td>
 <% end %>

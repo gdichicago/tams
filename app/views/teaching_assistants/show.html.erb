@@ -1,16 +1,16 @@
 <div class="row">
-  <h3 class="red-text text-lighten-2">Hello, <%= @ta.name %>!</h3>
+  <h2 class="light">Hello, <%= @ta.name %>!</h2>
 
   <% if @ta.banned? %>
-    <h5>You are not eligible to TA for <%= CHAPTER_NAME %> at this time.</h5>
+    <h5 class="red-text text-lighten-2 light">You are not eligible to TA for <%= CHAPTER_NAME %> at this time.</h5>
   <% else %>
-    <h5>You're signed up to TA for <span class="teal-text"><%= pluralize(@ta.schedule.length, 'course') %></span>. We need TAs for <span class="teal-text"><%= pluralize(@courses.count, 'course') %></span>.</h5>
+    <h5 class="light">You're signed up to TA for <span class="red-text text-lighten-2"><%= pluralize(@ta.schedule.length, 'course') %></span>. We need TAs for <span class="red-text text-lighten-2"><%= pluralize(@courses.count, 'course') %></span>.</h5>
 
     <div class="row">
       <ul class="collapsible popout" data-collapsible="accordion">
         <li>
           <div class="collapsible-header">
-            <span class="teal-text"><%= icon_calendar %></span>Schedule
+            <span class="cyan-text text-darken-4"><%= icon_calendar %></span>Schedule
           </div>
           <div class="collapsible-body">
             <%= render partial: 'schedule', locals: { ta: @ta } %>
@@ -18,7 +18,7 @@
         </li>
         <li>
           <div class="collapsible-header">
-            <span class="teal-text"><%= icon_terminal %></span>Upcoming Courses
+            <span class="cyan-text text-darken-4"><%= icon_terminal %></span>Upcoming Courses
           </div>
           <div class="collapsible-body">
             <%= render partial: 'upcoming_courses', locals: { courses: @courses, ta: @ta } %>
@@ -26,7 +26,7 @@
         </li>
         <li>
           <div class="collapsible-header">
-            <span class="teal-text"><%= icon_clock %></span>History
+            <span class="cyan-text text-darken-4"><%= icon_clock %></span>History
           </div>
           <div class="collapsible-body">
             <%= render partial: 'history', locals: { ta: @ta } %>
@@ -34,7 +34,7 @@
         </li>
         <li>
           <div class="collapsible-header">
-            <span class="teal-text"><%= icon_cog %></span>Account Settings
+            <span class="cyan-text text-darken-4"><%= icon_cog %></span>Account Settings
           </div>
           <div class="collapsible-body">
             <%= render partial: 'settings', locals: { ta: @ta } %>

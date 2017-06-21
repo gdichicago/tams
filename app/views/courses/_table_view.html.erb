@@ -12,12 +12,12 @@
   </td>
 
   <td>
-    <a class="waves-effect waves-light btn teal" href="#modal-<%= course.id %>" title="List TAs for Course"><%= icon_list %></a>
+    <a class="waves-effect waves-light btn cyan darken-4" href="#modal-<%= course.id %>" title="List TAs for Course"><%= icon_list %></a>
     <div id="modal-<%= course.id %>" class="modal">
       <%= render partial: 'ta_list', locals: { course: course } %>
     </div>
 
-    <%= link_to icon_edit, edit_course_path(course), class: 'waves-effect waves-light btn teal', title: 'Edit Course' %>
-    <%= link_to icon_trash, { controller: :courses, action: :destroy, id: course }, method: :delete, class: 'waves-effect waves-light btn teal', title: 'Delete Course' %>
+    <%= link_to icon_edit, edit_course_path(course), class: 'waves-effect waves-light btn cyan darken-4', title: 'Edit Course' %>
+    <%= link_to icon_trash, { controller: :courses, action: :destroy, id: course }, method: :delete, class: 'waves-effect waves-light btn cyan darken-4', title: 'Delete Course' %>
   </td>
 <% end %>
